@@ -1,5 +1,5 @@
 // We use express to create our servers endpoints, and listen for & respond to requests from the frontend
-import express from "express";
+
 // We use dotenv so that we can access our environment variables
 import "dotenv/config";
 // We import our index.js so that we can query our database
@@ -18,7 +18,13 @@ requestHandler.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });
 
-// GET template
-requestHandler.get("/api/v1/get-template", (req, res) => {
-    res.send("Hello World!");
+  requestHandler.get("/api/v1/tech-professions", async (req, res) => {
+    try {
+      const dbResponse = await db.query("SELECT * FROM tech_professions");
+      res.json(dbResponse.rows); // Send only the data rows
+    } catch (error) {
+      console.error("Error fetching tech professions:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
   });
+  
