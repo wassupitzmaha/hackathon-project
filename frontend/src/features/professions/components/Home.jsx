@@ -1,43 +1,40 @@
-// features/analysis/components/Home.jsx
-
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 function Home() {
   return (
     <div>
-      <h1>Welcome to PathShift!</h1>
+      <h1>Welcome to ProfessioNest!</h1>
       <p>
-        <b>Introduction</b> <b />
-
+        <b>Introduction</b>
         <p>
-        As an incoming college freshman, I often find myself reflecting on the likelihood that individuals will pursue careers<b/>
-        related to their field of study. To address this, I have developed this interactive analysis to provide insights into this trend,<b />
-        helping others gain a clearer understanding of the connections between academic majors and professional pathways.
+          As curious and ambitious career-oriented leaders, Ali and Maha often find themselves looking for resources scattered in different place to start work towards their career
+          goals. Therefore, they created ProfessioNest for individuals trying to pursue a career tech so that it is easier for learners to tailor their time towards their career goals utilizing a centralized place of resources
+          instead of wasting time searching all over the internet for resources!
         </p>
 
-        <p>
-          <b>Data Processing</b> < b/>
-          <p>
-          - Feature 1: For every selected major, the program counts the total number of people who majored in the field and the number of people who are employed in a occupation related to that major.
-          <p>
-            - Feature 2: The program then calculates and prints the percentage likelihood of sticking to the selected major.</p>
-
-        <b>Visualizations</b>
-  <p>- Type 1: Pie Chart<p />
-
-  <p>- Type 2: Stacked Bar Chart </p>
-    
-  <p>- Type 3: Waffle Chart</p>
-  </p>
-
-
-          </p>
-
-        </p>
       </p>
+
+      {/* Profession Navigation Buttons */}
+      <div className="mt-4">
+        <h3>Explore Professions</h3>
+        <Link to="/FrontEndDeveloper">
+          <Button variant="primary" className="me-2">
+            Front-End Developer
+          </Button>
+        </Link>
+        
+        <Link to="/FrontEndDeveloper">
+          <Button variant="primary" className="me-2">
+            Front-End Developer
+          </Button>
+        </Link>
+
+        
+      </div>
     </div>
   );
 }
 
 export default Home;
-
