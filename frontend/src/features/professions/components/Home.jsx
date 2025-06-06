@@ -13,7 +13,7 @@ function Home() {
       <p>
         <b>Introduction</b>
         <p>
-          As curious and ambitious career-oriented leaders, Ali and Maha often find themselves looking for resources scattered in different places to start work towards their career
+          As curious and ambitious career-oriented leaders, Ali and Maha often find themselves looking for resources scattered in different places to start working towards their career
           goals. Therefore, they created ProfessioNest for individuals trying to pursue a career in tech so that it is easier for learners to tailor their time towards their career goals utilizing a centralized place of resources
           instead of wasting time searching all over the internet for resources!
         </p>
