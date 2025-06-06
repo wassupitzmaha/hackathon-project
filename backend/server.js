@@ -41,5 +41,19 @@ requestHandler.listen(port, () => {
       res.status(500).json({ error: "Internal server error" });
     }
   });
+
+  requestHandler.get("/api/v1/BackEndDeveloper", async (req, res) => {
+    try {
+      const dbResponse = await db.query("SELECT * FROM tech_professions WHERE profession= 'Back-End Developer' ");
+      const result = dbResponse.rows.map(row => ({
+        ...row,
+        skills: row.skills.split(',').map(skill => skill.trim())
+      }));
+      res.json(result);
+    } catch (error) {
+      console.error("Error fetching tech professions:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
   
   
