@@ -2,6 +2,8 @@
 import pg from "pg";
 const { Pool } = pg;
 
+
+
 // We're creating a 'pool' of database connections
 // Think of this like a group of friendly assistants ready to help us talk to the database
 // It's much faster than hiring a new assistant every time we need something!
