@@ -4,42 +4,46 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const skillResources = {
-    HTML: {
-      articles: [
-        { title: "MDN Web Docs: HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
-        { title: "HTML.com Tutorials", url: "https://html.com/" }
-      ],
-      courses: [
-        { title: "freeCodeCamp: Responsive Web Design", url: "https://www.freecodecamp.org/learn/2022/responsive-web-design/" }
-      ],
-      youtube: [
-        { title: "HTML Crash Course For Absolute Beginners", url: "https://www.youtube.com/watch?v=UB1O30fR-EE" }
-      ]
-    },
-    CSS: {
-      articles: [
-        { title: "MDN Web Docs: CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" }
-      ],
-      courses: [
-        { title: "Codecademy: Learn CSS", url: "https://www.codecademy.com/learn/learn-css" }
-      ],
-      youtube: [
-        { title: "CSS Crash Course For Absolute Beginners", url: "https://www.youtube.com/watch?v=yfoY53QXEnI" }
-      ]
-    },
-    JavaScript: {
-      articles: [
-        { title: "MDN Web Docs: JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" }
-      ],
-      courses: [
-        { title: "JavaScript.info", url: "https://javascript.info/" }
-      ],
-      youtube: [
-        { title: "JavaScript Crash Course For Beginners", url: "https://www.youtube.com/watch?v=hdI2bqOjy3c" }
-      ]
-    }
-  };
-  
+  "Network Security": {
+    articles: [
+      { title: "Cisco: What Is Network Security?", url: "https://www.cisco.com/c/en/us/products/security/what-is-network-security.html" },
+      { title: "IBM: Network Security Explained", url: "https://www.ibm.com/topics/network-security" }
+    ],
+    courses: [
+      { title: "Coursera: Introduction to Network Security", url: "https://www.coursera.org/learn/intro-cyber-security" },
+      { title: "Cybrary: Network Security Fundamentals", url: "https://www.cybrary.it/course/network-security/" }
+    ],
+    youtube: [
+      { title: "Network Security Full Course", url: "https://www.youtube.com/watch?v=3QhU9jd03a0" }
+    ]
+  },
+  "Firewalls": {
+    articles: [
+      { title: "Cloudflare: What is a Firewall?", url: "https://www.cloudflare.com/learning/ddos/glossary/firewall/" },
+      { title: "Palo Alto Networks: Firewall Basics", url: "https://www.paloaltonetworks.com/cyberpedia/what-is-a-firewall" }
+    ],
+    courses: [
+      { title: "Udemy: Firewalls and Network Security", url: "https://www.udemy.com/course/firewalls-and-network-security/" }
+    ],
+    youtube: [
+      { title: "Firewalls Explained", url: "https://www.youtube.com/watch?v=9rLZYyMbJic" }
+    ]
+  },
+  "SIEM": {
+    articles: [
+      { title: "Splunk: What is SIEM?", url: "https://www.splunk.com/en_us/data-insider/what-is-siem.html" },
+      { title: "IBM: Security Information and Event Management (SIEM)", url: "https://www.ibm.com/topics/siem" }
+    ],
+    courses: [
+      { title: "Coursera: SIEM Tools and Techniques", url: "https://www.coursera.org/learn/siem-tools-techniques" },
+      { title: "Cybrary: SIEM Fundamentals", url: "https://www.cybrary.it/course/siem-fundamentals/" }
+    ],
+    youtube: [
+      { title: "SIEM Explained", url: "https://www.youtube.com/watch?v=F9pJ8rU1J7Q" }
+    ]
+  }
+};
+
 function CybersecurityAnalyst() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -71,11 +75,11 @@ function CybersecurityAnalyst() {
 
   return (
     <div>
-      <h2>Front-End Developer Skills</h2>
+      <h2>Cybersecurity Analyst Skills</h2>
       <p>
-        <b>What Do Front-End Developers Do?</b>
+        <b>What Do Cybersecurity Analysts Do?</b>
         <p>
-        Front-end developers focus on the visual and interactive elements of a website or web application that users see and interact with. They use coding languages like HTML, CSS, and JavaScript to create the user interface (UI) and ensure the website or application is responsive and works across different devices and browsers. 
+          Cybersecurity analysts protect organizations from digital threats by monitoring networks, analyzing security incidents, and implementing defense strategies. They use tools and best practices to detect vulnerabilities, respond to breaches, and ensure the safety of sensitive data and systems.
         </p>
       </p>
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
