@@ -33,6 +33,7 @@ function App() {
           <Route path="/DevOpsEngineer" element={<DevOpsEngineer />} />
           <Route path="/UI-UXDesigner" element={<UIUXDesigner />} />
           <Route path="/MachineLearningEngineer" element={<MachineLearningEngineer />} />
+          <Route path="/MobileAppDeveloper" element={<MobileAppDeveloper />} />
 
 
 
