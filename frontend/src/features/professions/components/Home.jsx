@@ -4,10 +4,19 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FaCode, FaServer, FaCogs, FaShieldAlt, FaChartLine } from 'react-icons/fa';
+import {
+  FaCode,            // Front-End Developer
+  FaServer,          // Back-End Developer
+  FaCogs,            // DevOps Engineer
+  FaShieldAlt,       // Cybersecurity Analyst
+  FaChartLine,       // Data Scientist
+  FaPaintBrush,      // UI/UX Designer
+  FaRobot,           // Machine Learning Engineer
+  FaCloud,           // Cloud Engineer
+  FaMobileAlt,       // Mobile App Developer
+  FaLayerGroup       // Full-Stack Developer
+} from 'react-icons/fa';
 import ProfessionSearch from '../data/profession-search.jsx';
-
-
 
 function Home() {
   return (
@@ -22,8 +31,8 @@ function Home() {
         </p>
       </p>
 
-            {/* Add your search bar here */}
-            <ProfessionSearch />
+      {/* Add your search bar here */}
+      <ProfessionSearch />
 
       {/* Profession Navigation Cards */}
       <div className="mt-4">
@@ -46,7 +55,7 @@ function Home() {
               <Card.Body>
                 <FaServer size={40} className="mb-2 text-success" />
                 <Card.Title>Back-End Developer</Card.Title>
-                <Button as={Link} to="BackEndDeveloper" variant="success">
+                <Button as={Link} to="/BackEndDeveloper" variant="success">
                   Explore
                 </Button>
               </Card.Body>
@@ -88,9 +97,9 @@ function Home() {
           <Col>
             <Card className="h-100 text-center shadow-sm">
               <Card.Body>
-                <FaCogs size={40} className="mb-2 text-warning" />
+                <FaPaintBrush size={40} className="mb-2 text-secondary" />
                 <Card.Title>UI/UX Designer</Card.Title>
-                <Button as={Link} to="/UI-UXDesigner" variant="warning">
+                <Button as={Link} to="/UIUXDesigner" variant="secondary">
                   Explore
                 </Button>
               </Card.Body>
@@ -99,9 +108,9 @@ function Home() {
           <Col>
             <Card className="h-100 text-center shadow-sm">
               <Card.Body>
-                <FaCogs size={40} className="mb-2 text-warning" />
+                <FaRobot size={40} className="mb-2 text-dark" />
                 <Card.Title>Machine Learning Engineer</Card.Title>
-                <Button as={Link} to="/MachineLearningEngineer" variant="warning">
+                <Button as={Link} to="/MachineLearningEngineer" variant="dark">
                   Explore
                 </Button>
               </Card.Body>
@@ -110,9 +119,9 @@ function Home() {
           <Col>
             <Card className="h-100 text-center shadow-sm">
               <Card.Body>
-                <FaCogs size={40} className="mb-2 text-warning" />
+                <FaCloud size={40} className="mb-2 text-primary" />
                 <Card.Title>Cloud Engineer</Card.Title>
-                <Button as={Link} to="/CloudEngineer" variant="warning">
+                <Button as={Link} to="/CloudEngineer" variant="primary">
                   Explore
                 </Button>
               </Card.Body>
@@ -121,9 +130,9 @@ function Home() {
           <Col>
             <Card className="h-100 text-center shadow-sm">
               <Card.Body>
-                <FaCogs size={40} className="mb-2 text-warning" />
+                <FaMobileAlt size={40} className="mb-2 text-success" />
                 <Card.Title>Mobile App Developer</Card.Title>
-                <Button as={Link} to="/MobileAppDeveloper" variant="warning">
+                <Button as={Link} to="/MobileAppDeveloper" variant="success">
                   Explore
                 </Button>
               </Card.Body>
@@ -132,9 +141,9 @@ function Home() {
           <Col>
             <Card className="h-100 text-center shadow-sm">
               <Card.Body>
-                <FaCogs size={40} className="mb-2 text-warning" />
+                <FaLayerGroup size={40} className="mb-2 text-info" />
                 <Card.Title>Full-Stack Developer</Card.Title>
-                <Button as={Link} to="/FullStackDeveloper" variant="warning">
+                <Button as={Link} to="/FullStackDeveloper" variant="info">
                   Explore
                 </Button>
               </Card.Body>
