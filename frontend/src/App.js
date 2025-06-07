@@ -6,7 +6,10 @@ import FrontEndDeveloper from './features/professions/components/FrontEndDevelop
 import BackEndDeveloper from './features/professions/components/BackEndDeveloper.jsx';
 import CybersecurityAnalyst from './features/professions/components/CybersecurityAnalyst.jsx';
 import DataScientist from './features/professions/components/DataScientist.jsx';
-import DevOpsEngineer from './features/professions/components/DevOpsEngineer.jsx'
+import DevOpsEngineer from './features/professions/components/DevOpsEngineer.jsx';
+import UIUXDesigner from './features/professions/components/UI-UXDesigner.jsx';
+import MachineLearningEngineer from './features/professions/components/MachineLearningEngineer.jsx'
+import MobileAppDevelope from 
 import Home from './features/professions/components/Home.jsx'
 
 
@@ -25,9 +28,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/FrontEndDeveloper" element={<FrontEndDeveloper />} />
           <Route path="/BackEndDeveloper" element={<BackEndDeveloper />} />
-          <Route path="CybersecurityAnalyst" element={<CybersecurityAnalyst />} />
-          <Route path="DataScientist" element={<DataScientist />} />
-          <Route path="DevOpsEngineer" element={<DevOpsEngineer />} />
+          <Route path="/CybersecurityAnalyst" element={<CybersecurityAnalyst />} />
+          <Route path="/DataScientist" element={<DataScientist />} />
+          <Route path="/DevOpsEngineer" element={<DevOpsEngineer />} />
+          <Route path="/UI-UXDesigner" element={<UIUXDesigner />} />
+          <Route path="/MachineLearningEngineer" element={<MachineLearningEngineer />} />
 
 
 

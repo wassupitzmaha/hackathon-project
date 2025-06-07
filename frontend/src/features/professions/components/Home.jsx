@@ -89,8 +89,8 @@ function Home() {
             <Card className="h-100 text-center shadow-sm">
               <Card.Body>
                 <FaCogs size={40} className="mb-2 text-warning" />
-                <Card.Title>UI/UX Engineer</Card.Title>
-                <Button as={Link} to="/UI/UXEngineer" variant="warning">
+                <Card.Title>UI/UX Designer</Card.Title>
+                <Button as={Link} to="/UI-UXDesigner" variant="warning">
                   Explore
                 </Button>
               </Card.Body>

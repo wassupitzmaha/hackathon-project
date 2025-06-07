@@ -1,9 +1,9 @@
-function UIUXDesigner() {
+function CloudEngineer() {
     return (
       <div>
-        <h2>UI-UX Designer</h2>
+        <h2>Cloud Engineer</h2>
         <div>Delete this function and implement your code, Ali</div>
       </div>
     );
   }
-  export default UIUXDesigner;
+  export default CloudEngineer;
