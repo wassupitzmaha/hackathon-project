@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaCode, FaServer, FaCogs, FaShieldAlt, FaChartLine } from 'react-icons/fa';
+import ProfessionSearch from '../data/profession-search.jsx';
+
+
 
 function Home() {
   return (
@@ -18,6 +21,9 @@ function Home() {
           instead of wasting time searching all over the internet for resources!
         </p>
       </p>
+
+            {/* Add your search bar here */}
+            <ProfessionSearch />
 
       {/* Profession Navigation Cards */}
       <div className="mt-4">
