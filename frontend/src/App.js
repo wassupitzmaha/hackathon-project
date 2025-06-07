@@ -9,7 +9,7 @@ import DataScientist from './features/professions/components/DataScientist.jsx';
 import DevOpsEngineer from './features/professions/components/DevOpsEngineer.jsx';
 import UIUXDesigner from './features/professions/components/UI-UXDesigner.jsx';
 import MachineLearningEngineer from './features/professions/components/MachineLearningEngineer.jsx'
-import MobileAppDevelope from 
+import MobileAppDeveloper from './features/professions/components/MobileAppDeveloper.jsx'
 import Home from './features/professions/components/Home.jsx'
 
 
