@@ -85,6 +85,61 @@ function Home() {
               </Card.Body>
             </Card>
           </Col>
+          <Col>
+            <Card className="h-100 text-center shadow-sm">
+              <Card.Body>
+                <FaCogs size={40} className="mb-2 text-warning" />
+                <Card.Title>UI/UX Engineer</Card.Title>
+                <Button as={Link} to="/UI/UXEngineer" variant="warning">
+                  Explore
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card className="h-100 text-center shadow-sm">
+              <Card.Body>
+                <FaCogs size={40} className="mb-2 text-warning" />
+                <Card.Title>Machine Learning Engineer</Card.Title>
+                <Button as={Link} to="/MachineLearningEngineer" variant="warning">
+                  Explore
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card className="h-100 text-center shadow-sm">
+              <Card.Body>
+                <FaCogs size={40} className="mb-2 text-warning" />
+                <Card.Title>Cloud Engineer</Card.Title>
+                <Button as={Link} to="/CloudEngineer" variant="warning">
+                  Explore
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card className="h-100 text-center shadow-sm">
+              <Card.Body>
+                <FaCogs size={40} className="mb-2 text-warning" />
+                <Card.Title>Mobile App Developer</Card.Title>
+                <Button as={Link} to="/MobileAppDeveloper" variant="warning">
+                  Explore
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card className="h-100 text-center shadow-sm">
+              <Card.Body>
+                <FaCogs size={40} className="mb-2 text-warning" />
+                <Card.Title>Full-Stack Developer</Card.Title>
+                <Button as={Link} to="/FullStackDeveloper" variant="warning">
+                  Explore
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
       </div>
     </div>
