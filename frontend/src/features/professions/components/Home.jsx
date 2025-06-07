@@ -40,7 +40,7 @@ function Home() {
               <Card.Body>
                 <FaServer size={40} className="mb-2 text-success" />
                 <Card.Title>Back-End Developer</Card.Title>
-                <Button as={Link} to="/BackEndEngineer" variant="success">
+                <Button as={Link} to="BackEndDeveloper" variant="success">
                   Explore
                 </Button>
               </Card.Body>

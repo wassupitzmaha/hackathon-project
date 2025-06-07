@@ -38,7 +38,6 @@ const skillResources = {
         { title: "JavaScript Crash Course For Beginners", url: "https://www.youtube.com/watch?v=hdI2bqOjy3c" }
       ]
     }
-    // Add more skills as needed
   };
   
 function FrontEndDeveloper() {
@@ -73,7 +72,12 @@ function FrontEndDeveloper() {
   return (
     <div>
       <h2>Front-End Developer Skills</h2>
-      {/* ...description... */}
+      <p>
+        <b>What Do Front-End Developers Do?</b>
+        <p>
+        Front-end developers focus on the visual and interactive elements of a website or web application that users see and interact with. They use coding languages like HTML, CSS, and JavaScript to create the user interface (UI) and ensure the website or application is responsive and works across different devices and browsers. 
+        </p>
+      </p>
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
           <Col key={idx}>
