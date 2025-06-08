@@ -138,6 +138,49 @@ function CloudEngineer() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: 'red' }}>{error}</div>;
 
-  return (1);
+  return ( <div>
+    <h2>Cloud Engineer Skills</h2>
+    <p>
+      <b>What Do Cloud Engineers Do?</b>
+      <p>
+      Cloud engineers design, deploy, and maintain cloud-based systems and infrastructure to ensure efficient, secure, and scalable operations for organizations. They also monitor cloud resources, troubleshoot issues, and collaborate with teams to optimize performance and cost-effectiveness.
+      </p>
+    </p>
+    <Row xs={1} sm={2} md={3} className="g-4 mt-3">
+      {skills.map((skill, idx) => (
+        <Col key={idx}>
+          <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ cursor: "pointer" }}>
+            <Card.Body>
+              <Card.Title>{skill}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+    {selectedSkill && skillResources[selectedSkill] && (
+      <div className="mt-4">
+        <h3>Resources for {selectedSkill}</h3>
+        <h5>Articles</h5>
+        <ul>
+          {skillResources[selectedSkill].articles.map((item, idx) => (
+            <li key={idx}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
+          ))}
+        </ul>
+        <h5>Courses</h5>
+        <ul>
+          {skillResources[selectedSkill].courses.map((item, idx) => (
+            <li key={idx}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
+          ))}
+        </ul>
+        <h5>YouTube Tutorials</h5>
+        <ul>
+          {skillResources[selectedSkill].youtube.map((item, idx) => (
+            <li key={idx}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
+          ))}
+        </ul>
+        <button className="btn btn-secondary mt-2" onClick={() => setSelectedSkill(null)}>Close</button>
+      </div>
+    )}
+  </div>);
 }
 export default CloudEngineer;
