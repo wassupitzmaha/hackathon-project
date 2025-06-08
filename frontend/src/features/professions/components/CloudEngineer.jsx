@@ -73,7 +73,7 @@ const skillResources = {
         url: "https://www.youtube.com/watch?v=2FrrGNCVopg",
       },
     ],
-    GCP: {
+    GCP : {
       articles: [
         {
           title: "How to learn GCP: Guide and Resources (2025 Update)",

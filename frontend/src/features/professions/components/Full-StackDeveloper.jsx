@@ -65,7 +65,7 @@ const skillResources = {
       },
     ],
   },
-  Javascript: {
+  JavaScript: {
     articles: [
       {
         title: "The Modern JavaScript Tutorial",
@@ -124,17 +124,16 @@ function FullStackDeveloper() {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: "red" }}>{error}</div>;
+
   return (
     <div>
       <h2>Full Stack Developer Skills</h2>
       <p>
         <b>What Do Full Stack Developers Do?</b>
-        <p>
-          Full stack developers design and build both the front-end (user
+          Full Stack Developers design and build both the front-end (user
           interface) and back-end (server, databases) of websites and
           applications. They manage the entire development process, ensuring
           seamless integration and functionality across all components.
-        </p>
       </p>
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
