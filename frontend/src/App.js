@@ -33,7 +33,7 @@ function App() {
           <Route path="/CybersecurityAnalyst" element={<CybersecurityAnalyst />} />
           <Route path="/DataScientist" element={<DataScientist />} />
           <Route path="/DevOpsEngineer" element={<DevOpsEngineer />} />
-          <Route path="/UI-UXDesigner" element={<UIUXDesigner />} />
+          <Route path="/UIUXDesigner" element={<UIUXDesigner />} />
           <Route path="/MachineLearningEngineer" element={<MachineLearningEngineer />} />
           <Route path="/MobileAppDeveloper" element={<MobileAppDeveloper />} />
           <Route path="/FullStackDeveloper" element={<FullStackDeveloper />} />
