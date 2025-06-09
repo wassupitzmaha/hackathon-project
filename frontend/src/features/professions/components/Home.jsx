@@ -4,20 +4,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {
-  FaCode,
-  FaServer,
-  FaCogs,
-  FaShieldAlt,
-  FaChartLine,
-  FaPaintBrush,
-  FaRobot,
-  FaCloud,
-  FaMobileAlt,
-  FaLayerGroup
-} from 'react-icons/fa';
+import { professions } from '../data/professions'; // Import your updated professions array
 import ProfessionSearch from '../data/profession-search.jsx';
-
 
 const heroStyle = {
   background: 'linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%)',
@@ -76,116 +64,91 @@ function Home() {
         <ProfessionSearch />
 
         <Row xs={1} sm={2} md={3} lg={4} className="g-4" style={cardGridStyle}>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)' }}>
-              <Card.Body>
-                <FaCode size={44} className="mb-2 text-primary" />
-                <Card.Title>Front-End Developer</Card.Title>
-                <Button as={Link} to="/FrontEndDeveloper" variant="primary" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #f093fb 0%, #f5576c 100%)' }}>
-              <Card.Body>
-                <FaServer size={44} className="mb-2 text-success" />
-                <Card.Title>Back-End Developer</Card.Title>
-                <Button as={Link} to="/BackEndDeveloper" variant="success" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #43e97b 0%, #38f9d7 100%)' }}>
-              <Card.Body>
-                <FaCogs size={44} className="mb-2 text-warning" />
-                <Card.Title>DevOps Engineer</Card.Title>
-                <Button as={Link} to="/DevOpsEngineer" variant="warning" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #f7971e 0%, #ffd200 100%)' }}>
-              <Card.Body>
-                <FaShieldAlt size={44} className="mb-2 text-danger" />
-                <Card.Title>Cybersecurity Analyst</Card.Title>
-                <Button as={Link} to="/CybersecurityAnalyst" variant="danger" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #56ccf2 0%, #2f80ed 100%)' }}>
-              <Card.Body>
-                <FaChartLine size={44} className="mb-2 text-info" />
-                <Card.Title>Data Scientist</Card.Title>
-                <Button as={Link} to="/DataScientist" variant="info" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #f8ffae 0%, #43cea2 100%)' }}>
-              <Card.Body>
-                <FaPaintBrush size={44} className="mb-2 text-secondary" />
-                <Card.Title>UI/UX Designer</Card.Title>
-                <Button as={Link} to="/UIUXDesigner" variant="secondary" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #30cfd0 0%, #330867 100%)' }}>
-              <Card.Body>
-                <FaRobot size={44} className="mb-2 text-dark" />
-                <Card.Title>Machine Learning Engineer</Card.Title>
-                <Button as={Link} to="/MachineLearningEngineer" variant="dark" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)' }}>
-              <Card.Body>
-                <FaCloud size={44} className="mb-2 text-primary" />
-                <Card.Title>Cloud Engineer</Card.Title>
-                <Button as={Link} to="/CloudEngineer" variant="primary" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%)' }}>
-              <Card.Body>
-                <FaMobileAlt size={44} className="mb-2 text-success" />
-                <Card.Title>Mobile App Developer</Card.Title>
-                <Button as={Link} to="/MobileAppDeveloper" variant="success" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card className="h-100 text-center shadow-lg border-0" style={{ background: 'linear-gradient(120deg, #fdc830 0%, #f37335 100%)' }}>
-              <Card.Body>
-                <FaLayerGroup size={44} className="mb-2 text-info" />
-                <Card.Title>Full-Stack Developer</Card.Title>
-                <Button as={Link} to="/FullStackDeveloper" variant="info" className="mt-2">
-                  Explore
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
+          {professions.map((p, idx) => {
+            const Icon = p.icon;
+            return (
+              <Col key={p.profession}>
+                <Card
+                  className="h-100 text-center shadow-lg border-0"
+                  style={{
+                    background: p.background,
+                    color: '#22223b',
+                    borderRadius: '1.5rem',
+                    boxShadow: '0 4px 24px rgba(80,80,120,0.10)',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {/* Faded Icon Watermark */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '-20px',
+                      right: '-20px',
+                      opacity: 0.07,
+                      fontSize: '7rem',
+                      pointerEvents: 'none'
+                    }}
+                  >
+                    <Icon />
+                  </div>
+                  <Card.Body style={{ position: 'relative', zIndex: 2 }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginBottom: '1rem'
+                      }}
+                    >
+                      <span
+                        style={{
+                          background: p.iconBg || 'rgba(255,255,255,0.15)',
+                          borderRadius: '50%',
+                          padding: '1rem'
+                        }}
+                      >
+                        <Icon size={44} className={`text-${p.color}`} />
+                      </span>
+                    </div>
+                    <Card.Title style={{ fontWeight: 700 }}>{p.profession}</Card.Title>
+                    {p.description && (
+                      <Card.Text style={{ fontSize: '0.97rem', minHeight: '48px' }}>
+                        {p.description}
+                      </Card.Text>
+                    )}
+                    <div style={{ margin: '0.5rem 0 1rem 0' }}>
+                      {p.skills.map(skill => (
+                        <span
+                          key={skill}
+                          style={{
+                            display: 'inline-block',
+                            margin: '0.2em 0.35em',
+                            background: 'rgba(255,255,255,0.18)',
+                            borderRadius: '0.5em',
+                            padding: '0.25em 0.75em',
+                            fontSize: '0.97rem',
+                            fontWeight: 500
+                          }}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                    <Button
+                      as={Link}
+                      to={p.link}
+                      variant={p.color}
+                      className="mt-2 px-4"
+                      style={{ borderRadius: '2em', fontWeight: 600 }}
+                    >
+                      Explore
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
         </Row>
       </div>
     </div>
