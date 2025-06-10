@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
@@ -48,6 +49,7 @@ const cardGradients = {
   HTML: "linear-gradient(120deg, #f7971e 0%, #ffd200 100%)",
   CSS: "linear-gradient(120deg, #56ccf2 0%, #2f80ed 100%)",
   JavaScript: "linear-gradient(120deg, #f8ffae 0%, #43cea2 100%)"
+
 };
 
 function FrontEndDeveloper() {
@@ -57,30 +59,31 @@ function FrontEndDeveloper() {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   useEffect(() => {
-    fetch('/api/v1/FrontEndDeveloper')
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
+    fetch("/api/v1/FrontEndDeveloper")
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         if (data.length > 0 && Array.isArray(data[0].skills)) {
           setSkills(data[0].skills);
         } else {
-          setError('No skills found');
+          setError("No skills found");
         }
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div style={{ color: 'red' }}>{error}</div>;
+  if (error) return <div style={{ color: "red" }}>{error}</div>;
 
   return (
     <div>
+
       <div
         style={{
           background: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
@@ -99,6 +102,7 @@ function FrontEndDeveloper() {
           <b>What Do Front-End Developers Do?</b>
           <br />
           Front-end developers focus on the visual and interactive elements of a website or web application that users see and interact with. They use coding languages like HTML, CSS, and JavaScript to create the user interface (UI) and ensure the website or application is responsive and works across different devices and browsers.
+
         </p>
         <img
           src="https://cdn.pixabay.com/photo/2025/02/14/10/41/google-cloud-storage-9406386_1280.png"
@@ -116,6 +120,7 @@ function FrontEndDeveloper() {
         {skills.map((skill, idx) => (
           <Col key={idx}>
             <Card
+
               className="h-100 text-center shadow-lg border-0"
               onClick={() => setSelectedSkill(skill)}
               style={{
@@ -150,6 +155,7 @@ function FrontEndDeveloper() {
                   </span>
                 </div>
                 <Card.Title style={{ fontWeight: 700 }}>{skill}</Card.Title>
+
               </Card.Body>
               {/* Faded Icon Watermark */}
               <div
@@ -187,22 +193,39 @@ function FrontEndDeveloper() {
           <h5>Articles</h5>
           <ul>
             {skillResources[selectedSkill].articles.map((item, idx) => (
-              <li key={idx}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
+              <li key={idx}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </li>
             ))}
           </ul>
           <h5>Courses</h5>
           <ul>
             {skillResources[selectedSkill].courses.map((item, idx) => (
-              <li key={idx}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
+              <li key={idx}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </li>
             ))}
           </ul>
           <h5>YouTube Tutorials</h5>
           <ul>
             {skillResources[selectedSkill].youtube.map((item, idx) => (
-              <li key={idx}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a></li>
+              <li key={idx}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </li>
             ))}
           </ul>
-          <button className="btn btn-secondary mt-2" onClick={() => setSelectedSkill(null)}>Close</button>
+          <button
+            className="btn btn-secondary mt-2"
+            onClick={() => setSelectedSkill(null)}
+          >
+            Close
+          </button>
         </div>
       )}
     </div>
