@@ -96,7 +96,12 @@ function BackEndDeveloper() {
       marginBottom: "2.5rem",
       boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.12)"
 
-    }}>
+    }}
+    
+      className = "text-center"
+
+    >
+
       <h2>Back-End Developer Skills</h2>
       <p>
         <b>What Do Back-End Developers Do?</b>
