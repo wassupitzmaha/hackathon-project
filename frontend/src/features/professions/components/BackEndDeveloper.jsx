@@ -21,6 +21,7 @@ const skillResources = {
     ]
   },
   "Express": {
+    icon: <FaServer size={54} color="#000" />,
     articles: [
       { title: "Express.js Official Documentation", url: "https://expressjs.com/" },
       { title: "MDN: Express Web Framework", url: "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction" }
@@ -33,6 +34,7 @@ const skillResources = {
     ]
   },
   "Python": {
+    icon: <FaPython size={54} color="#3776AB" />,
     articles: [
       { title: "Python Official Documentation", url: "https://docs.python.org/3/tutorial/" },
       { title: "Real Python Tutorials", url: "https://realpython.com/" }
