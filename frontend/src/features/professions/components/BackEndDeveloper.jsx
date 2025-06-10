@@ -97,12 +97,18 @@ function BackEndDeveloper() {
       boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.12)"
 
     }}
-    
+
       className = "text-center"
 
     >
 
-      <h2>Back-End Developer Skills</h2>
+      <h2 style = {{
+
+        fontWeight: 800, fontSize: '2.2rem', letterSpacing: '2px'
+
+      }}
+      
+      >Back-End Developer Skills</h2>
       <p>
         <b>What Do Back-End Developers Do?</b>
         <p>
