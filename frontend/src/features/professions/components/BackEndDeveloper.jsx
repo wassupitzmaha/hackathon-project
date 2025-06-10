@@ -108,8 +108,17 @@ function BackEndDeveloper() {
 
       }}
       
-      >Back-End Developer Skills</h2>
-      <p>
+      >
+        
+        Back-End Developer Skills
+        
+        </h2>
+      <p style = {{
+
+fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
+      }}
+      
+      >
         <b>What Do Back-End Developers Do?</b>
         <p>
           Back-end developers build and maintain the server-side logic, databases, and APIs that power web applications. They ensure data is processed, stored, and delivered securely and efficiently, enabling seamless communication between the server, database, and client-side interfaces.
