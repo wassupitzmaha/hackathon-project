@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { FaNodeJs, FaServer, FaPython } from 'react-icons/fa';
+
 
 const skillResources = {
   "Node.js": {
+    icon: <FaNodeJs size={54} color="#68A063" />,
     articles: [
       { title: "Node.js Official Documentation", url: "https://nodejs.org/en/docs/" },
       { title: "MDN: Introduction to Node.js", url: "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework" }
