@@ -87,7 +87,16 @@ function BackEndDeveloper() {
   if (error) return <div style={{ color: 'red' }}>{error}</div>;
 
   return (
-    <div>
+    <div style = {{
+
+      background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+      borderRadius: "1.5rem",
+      color: "#22223b",
+      padding: "2.5rem 2rem",
+      marginBottom: "2.5rem",
+      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.12)"
+
+    }}>
       <h2>Back-End Developer Skills</h2>
       <p>
         <b>What Do Back-End Developers Do?</b>
