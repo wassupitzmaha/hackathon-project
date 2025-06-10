@@ -12,6 +12,7 @@ import MachineLearningEngineer from './features/professions/components/MachineLe
 import MobileAppDeveloper from './features/professions/components/MobileAppDeveloper.jsx'
 import FullStackDeveloper from './features/professions/components/Full-StackDeveloper.jsx'
 import CloudEngineer from './features/professions/components/CloudEngineer.jsx'
+import AboutMe from './features/about-me/AboutMe.jsx'
 import Home from './features/professions/components/Home.jsx'
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/MobileAppDeveloper" element={<MobileAppDeveloper />} />
           <Route path="/FullStackDeveloper" element={<FullStackDeveloper />} />
           <Route path="/CloudEngineer" element={<CloudEngineer />} />
+          <Route path="/AboutMe" element={<AboutMe />} />
 
 
 
