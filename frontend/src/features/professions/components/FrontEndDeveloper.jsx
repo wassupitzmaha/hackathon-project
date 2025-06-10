@@ -4,15 +4,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaHtml5, FaCss3Alt, FaJsSquare } from 'react-icons/fa';
 
-// Animations with CSS-in-JS (no external library needed)
-const cardMotion = {
-  transition: 'transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.2s',
-};
-const cardMotionHover = {
-  transform: 'translateY(-12px) scale(1.04) rotate(-1deg)',
-  boxShadow: '0 8px 32px 0 rgba(80, 80, 120, 0.18), 0 2px 8px rgba(0,0,0,0.10)',
-};
-
 const skillResources = {
   HTML: {
     icon: <FaHtml5 size={54} color="#e44d26" />,
@@ -64,7 +55,6 @@ function FrontEndDeveloper() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedSkill, setSelectedSkill] = useState(null);
-  const [hovered, setHovered] = useState(null);
 
   useEffect(() => {
     fetch('/api/v1/FrontEndDeveloper')
@@ -118,40 +108,25 @@ function FrontEndDeveloper() {
             margin: '2rem auto 0',
             display: 'block',
             borderRadius: '1rem',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-            animation: 'float 2.5s ease-in-out infinite'
+            boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
           }}
         />
       </div>
-      <style>
-        {`
-          @keyframes float {
-            0% { transform: translateY(0px);}
-            50% { transform: translateY(-18px);}
-            100% { transform: translateY(0px);}
-          }
-        `}
-      </style>
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
           <Col key={idx}>
             <Card
               className="h-100 text-center shadow-lg border-0"
               onClick={() => setSelectedSkill(skill)}
-              onMouseEnter={() => setHovered(idx)}
-              onMouseLeave={() => setHovered(null)}
               style={{
                 cursor: "pointer",
                 background: cardGradients[skill] || "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)",
                 color: "#22223b",
                 borderRadius: "1.5rem",
-                boxShadow: hovered === idx
-                  ? "0 12px 32px rgba(80,80,120,0.16), 0 2px 8px rgba(0,0,0,0.13)"
-                  : "0 4px 24px rgba(80,80,120,0.10)",
+                boxShadow: "0 4px 24px rgba(80,80,120,0.10)",
                 position: "relative",
                 overflow: "hidden",
-                ...cardMotion,
-                ...(hovered === idx ? cardMotionHover : {}),
+                transition: "transform 0.18s",
               }}
             >
               <Card.Body style={{ position: 'relative', zIndex: 2 }}>
@@ -160,9 +135,7 @@ function FrontEndDeveloper() {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginBottom: '1rem',
-                    transition: 'transform 0.25s cubic-bezier(.4,2,.6,1)',
-                    transform: hovered === idx ? 'scale(1.15) rotate(-4deg)' : 'scale(1)'
+                    marginBottom: '1rem'
                   }}
                 >
                   <span
@@ -186,9 +159,7 @@ function FrontEndDeveloper() {
                   right: '-18px',
                   opacity: 0.07,
                   fontSize: '6rem',
-                  pointerEvents: 'none',
-                  transition: 'opacity 0.2s',
-                  opacity: hovered === idx ? 0.13 : 0.07
+                  pointerEvents: 'none'
                 }}
               >
                 {skillResources[skill] && skillResources[skill].icon}
@@ -206,18 +177,9 @@ function FrontEndDeveloper() {
             padding: "2rem 1.5rem",
             boxShadow: "0 2px 16px rgba(80,80,120,0.10)",
             maxWidth: 600,
-            margin: "2rem auto",
-            animation: "fadein 0.7s"
+            margin: "2rem auto"
           }}
         >
-          <style>
-            {`
-              @keyframes fadein {
-                from { opacity: 0; transform: scale(0.95);}
-                to { opacity: 1; transform: scale(1);}
-              }
-            `}
-          </style>
           <h3 className="mb-3" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
             {skillResources[selectedSkill].icon}
             <span>Resources for {selectedSkill}</span>

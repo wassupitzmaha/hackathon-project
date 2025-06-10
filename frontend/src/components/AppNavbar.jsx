@@ -49,7 +49,7 @@ const AppNavbar = () => {
                 textShadow: '0 2px 8px #fff'
               }}
             >
-              About Me
+              About Us
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
