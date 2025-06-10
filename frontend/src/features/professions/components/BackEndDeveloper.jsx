@@ -49,6 +49,14 @@ const skillResources = {
   }
 };
 
+const cardGradients = {
+  "Node.js": "linear-gradient(120deg, #43e97b 0%, #38f9d7 100%)",
+  "Express": "linear-gradient(120deg, #cfd9df 0%, #e2ebf0 100%)",
+  "Python": "linear-gradient(120deg, #f7971e 0%, #ffd200 100%)"
+};
+
+
+
 function BackEndDeveloper() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -90,7 +98,7 @@ function BackEndDeveloper() {
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
           <Col key={idx}>
-            <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ cursor: "pointer" }}>
+            <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ background: cardGradients[skill] || "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)", cursor: "pointer" }}>
               <Card.Body>
                 <Card.Title>{skill}</Card.Title>
               </Card.Body>
