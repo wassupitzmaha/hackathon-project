@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
+import React, { useEffect, useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { FaNodeJs, FaServer, FaPython } from 'react-icons/fa';
+
 
 const skillResources = {
   "Node.js": {
+    icon: <FaNodeJs size={54} color="#68A063" />,
     articles: [
       {
         title: "Node.js Official Documentation",
@@ -32,7 +36,9 @@ const skillResources = {
       },
     ],
   },
-  Express: {
+
+  "Express": {
+    icon: <FaServer size={54} color="#000" />,
     articles: [
       {
         title: "Express.js Official Documentation",
@@ -56,7 +62,9 @@ const skillResources = {
       },
     ],
   },
-  Python: {
+
+  "Python": {
+    icon: <FaPython size={54} color="#3776AB" />,
     articles: [
       {
         title: "Python Official Documentation",
@@ -82,6 +90,14 @@ const skillResources = {
     ],
   },
 };
+
+const cardGradients = {
+  "Node.js": "linear-gradient(120deg, #43e97b 0%, #38f9d7 100%)",
+  "Express": "linear-gradient(120deg, #cfd9df 0%, #e2ebf0 100%)",
+  "Python": "linear-gradient(120deg, #f7971e 0%, #ffd200 100%)"
+};
+
+
 
 function BackEndDeveloper() {
   const [skills, setSkills] = useState([]);
@@ -113,10 +129,40 @@ function BackEndDeveloper() {
   if (error) return <div style={{ color: "red" }}>{error}</div>;
 
   return (
-    <div>
-      <h2>Back-End Developer Skills</h2>
-      <p>
+    <div style = {{
+
+      background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+      borderRadius: "1.5rem",
+      color: "#22223b",
+      padding: "2.5rem 2rem",
+      marginBottom: "2.5rem",
+      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.12)"
+
+    }}
+
+      className = "text-center"
+
+    >
+
+      <h2 style = {{
+
+        fontWeight: 800, fontSize: '2.2rem', letterSpacing: '2px'
+
+      }}
+      
+      >
+        
+        Back-End Developer Skills
+        
+        </h2>
+      <p style = {{
+
+fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
+      }}
+      
+      >
         <b>What Do Back-End Developers Do?</b>
+        <br />
         <p>
           Back-end developers build and maintain the server-side logic,
           databases, and APIs that power web applications. They ensure data is
@@ -125,17 +171,65 @@ function BackEndDeveloper() {
           interfaces.
         </p>
       </p>
+
+      <img
+
+          src="https://cdn.pixabay.com/photo/2017/06/10/07/18/server-2389219_1280.png"
+          alt="Backend illustration"
+          style={{
+              width: '150px',
+              margin: '2rem auto 0',
+              display: 'block',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+          }}
+
+      />
+
+
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
           <Col key={idx}>
-            <Card
-              className="h-100 text-center shadow-sm"
-              onClick={() => setSelectedSkill(skill)}
-              style={{ cursor: "pointer" }}
-            >
+
+            <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ background: cardGradients[skill] || "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)", cursor: "pointer" }}>
               <Card.Body>
-                <Card.Title>{skill}</Card.Title>
+
+              <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '1rem'
+  }}
+>
+  <span
+    style={{
+      background: 'rgba(255,255,255,0.18)',
+      borderRadius: '50%',
+      padding: '1rem',
+      boxShadow: '0 2px 8px rgba(80,80,120,0.08)'
+    }}
+  >
+    {skillResources[skill] && skillResources[skill].icon}
+  </span>
+</div>
+              
+                <Card.Title style={{ fontWeight: 700 }}>{skill}</Card.Title>
               </Card.Body>
+
+  <div
+  style={{
+    position: 'absolute',
+    top: '-30px',
+    right: '-0.5px',
+    opacity: 0.07,
+    fontSize: '6rem',
+    pointerEvents: 'none'
+  }}
+>
+  {skillResources[skill] && skillResources[skill].icon}
+</div>
+
             </Card>
           </Col>
         ))}
