@@ -101,7 +101,7 @@ function FrontEndDeveloper() {
           Front-end developers focus on the visual and interactive elements of a website or web application that users see and interact with. They use coding languages like HTML, CSS, and JavaScript to create the user interface (UI) and ensure the website or application is responsive and works across different devices and browsers.
         </p>
         <img
-          src="https://cdn.pixabay.com/photo/2017/01/10/19/05/technology-1974075_1280.png"
+          src="https://cdn.pixabay.com/photo/2025/02/14/10/41/google-cloud-storage-9406386_1280.png"
           alt="Frontend illustration"
           style={{
             width: '180px',
@@ -155,8 +155,8 @@ function FrontEndDeveloper() {
               <div
                 style={{
                   position: 'absolute',
-                  top: '-18px',
-                  right: '-18px',
+                  top: '-30px',
+                  right: '-0.5px',
                   opacity: 0.07,
                   fontSize: '6rem',
                   pointerEvents: 'none'

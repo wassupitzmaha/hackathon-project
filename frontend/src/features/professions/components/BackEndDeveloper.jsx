@@ -120,17 +120,69 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
       
       >
         <b>What Do Back-End Developers Do?</b>
+        <br />
         <p>
           Back-end developers build and maintain the server-side logic, databases, and APIs that power web applications. They ensure data is processed, stored, and delivered securely and efficiently, enabling seamless communication between the server, database, and client-side interfaces.
         </p>
       </p>
+
+      <img
+
+          src="https://cdn.pixabay.com/photo/2017/06/10/07/18/server-2389219_1280.png"
+          alt="Backend illustration"
+          style={{
+              width: '150px',
+              margin: '2rem auto 0',
+              display: 'block',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+          }}
+
+      />
+
+
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
           <Col key={idx}>
             <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ background: cardGradients[skill] || "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)", cursor: "pointer" }}>
               <Card.Body>
-                <Card.Title>{skill}</Card.Title>
+
+              <div
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: '1rem'
+  }}
+>
+  <span
+    style={{
+      background: 'rgba(255,255,255,0.18)',
+      borderRadius: '50%',
+      padding: '1rem',
+      boxShadow: '0 2px 8px rgba(80,80,120,0.08)'
+    }}
+  >
+    {skillResources[skill] && skillResources[skill].icon}
+  </span>
+</div>
+              
+                <Card.Title style={{ fontWeight: 700 }}>{skill}</Card.Title>
               </Card.Body>
+
+  <div
+  style={{
+    position: 'absolute',
+    top: '-30px',
+    right: '-0.5px',
+    opacity: 0.07,
+    fontSize: '6rem',
+    pointerEvents: 'none'
+  }}
+>
+  {skillResources[skill] && skillResources[skill].icon}
+</div>
+
             </Card>
           </Col>
         ))}
