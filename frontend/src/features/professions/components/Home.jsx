@@ -31,13 +31,12 @@ function Home() {
         </p>
       </p>
 
-      {/* Add your search bar here */}
-      <ProfessionSearch />
 
       {/* Profession Navigation Cards */}
       <div className="mt-4">
         <h3>Explore Professions</h3>
         <p>Click on the cards below and start exploring your passion</p>
+        <ProfessionSearch />
         <Row xs={1} sm={2} md={3} className="g-4 mt-2">
           <Col>
             <Card className="h-100 text-center shadow-sm">
