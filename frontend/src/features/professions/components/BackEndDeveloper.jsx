@@ -288,6 +288,18 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
           </button>
         </div>
       )}
+
+            {/* Subtle Card Animation */}
+            <style>{`
+        .skill-card {
+          transition: transform 0.2s, box-shadow 0.3s;
+        }
+        .skill-card:hover,
+        .skill-card:focus {
+          transform: translateY(-7px) scale(1.04);
+          box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+        }
+      `}</style>
     </div>
   );
 }
