@@ -65,189 +65,216 @@ const skillIcons = {
 const UIUXDesigner = () => {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error] = useState("");
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   // Fetch skills from API (mocked for demo)
   useEffect(() => {
-    // Replace with your actual API call if needed
     setTimeout(() => {
       setSkills(["Figma", "Sketch", "AdobeXD"]);
       setLoading(false);
     }, 700);
-    // If using real API:
-    // fetch("/api/v1/UIUXDesigner")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.skills) setSkills(data.skills);
-    //     else setError("No skills found.");
-    //     setLoading(false);
-    //   })
-    //   .catch(() => {
-    //     setError("Failed to fetch skills.");
-    //     setLoading(false);
-    //   });
   }, []);
 
   return (
-    <Container className="py-5">
-      {/* Hero Section */}
-      <section className="text-center mb-5">
-        <MdDesignServices
-          size={96}
-          color="#0d6efd"
-          className="mb-3"
-          aria-hidden="true"
-          style={{ transition: "transform 0.3s" }}
-          onMouseEnter={e => e.currentTarget.style.transform = "rotate(-8deg) scale(1.1)"}
-          onMouseLeave={e => e.currentTarget.style.transform = "rotate(0) scale(1)"}
+    <div>
+      {/* Hero Section with Gradient Background */}
+      <section
+        style={{
+          minHeight: "48vh",
+          width: "100%",
+          background: "linear-gradient(120deg, #F24E1E 0%, #A259FF 60%, #5C2D91 100%)",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "3rem 0 2.5rem 0",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Decorative Blurred Circles */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-60px",
+            left: "-60px",
+            width: "250px",
+            height: "250px",
+            background: "radial-gradient(circle, #fff3 0%, #fff0 100%)",
+            borderRadius: "50%",
+            filter: "blur(24px)",
+            zIndex: 0,
+          }}
         />
-        <h1 className="fw-bold mb-2">UI/UX Designer</h1>
-        <p className="lead text-secondary mb-0">
-          Crafting seamless, delightful user experiences and beautiful interfaces using modern design tools.
-        </p>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-80px",
+            right: "-80px",
+            width: "320px",
+            height: "320px",
+            background: "radial-gradient(circle, #fff2 0%, #fff0 100%)",
+            borderRadius: "50%",
+            filter: "blur(32px)",
+            zIndex: 0,
+          }}
+        />
+        <Container style={{ position: "relative", zIndex: 1 }}>
+          <div className="text-center">
+            <MdDesignServices size={110} color="#fff" className="mb-3" aria-hidden="true" />
+            <h1 className="fw-bold mb-3" style={{ fontSize: "2.8rem" }}>
+              UI/UX Designer
+            </h1>
+            <p className="lead" style={{ fontSize: "1.35rem", maxWidth: 800, margin: "0 auto", fontWeight: 500 }}>
+              A UI/UX designer is responsible for shaping how users interact with digital products, blending creativity and technical skills to craft intuitive, visually appealing, and efficient user experiences. They conduct user research, design wireframes and prototypes, and collaborate with developers to ensure every interface is both beautiful and functional. From defining user flows to refining visual details, UI/UX designers bridge the gap between user needs and business goals, making technology accessible, enjoyable, and impactful for everyone.
+            </p>
+          </div>
+        </Container>
       </section>
 
-      {/* Loading/Error State */}
-      {loading && (
-        <div className="text-center py-5">
-          <Spinner animation="border" variant="primary" />
-          <div className="mt-2">Loading skills...</div>
-        </div>
-      )}
-      {error && <Alert variant="danger">{error}</Alert>}
+      <Container className="py-5">
+        {/* Loading/Error State */}
+        {loading && (
+          <div className="text-center py-5">
+            <Spinner animation="border" variant="primary" />
+            <div className="mt-2">Loading skills...</div>
+          </div>
+        )}
+        {error && <Alert variant="danger">{error}</Alert>}
 
-      {/* Skill Cards */}
-      {!loading && !error && (
-        <Row xs={1} sm={2} md={3} className="g-4 mb-5 justify-content-center">
-          {skills.map((skill) => (
-            <Col key={skill}>
-              <Card
-                className={`h-100 text-center shadow-sm skill-card position-relative ${
-                  selectedSkill === skill ? "border-primary" : ""
-                }`}
-                onClick={() => setSelectedSkill(skill)}
-                tabIndex={0}
-                aria-pressed={selectedSkill === skill}
-                aria-label={`View resources for ${skill}`}
-                style={{
-                  background: cardGradients[skill] || "#f8f9fa",
-                  color: "#fff",
-                  cursor: "pointer",
-                  transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
-                  userSelect: "none",
-                  borderWidth: selectedSkill === skill ? "3px" : "1px",
-                  boxShadow: "0 0.5rem 1.5rem rgba(0,0,0,0.10)",
-                  position: "relative",
-                  overflow: "hidden"
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.transform = "scale(1.07)";
-                  e.currentTarget.style.boxShadow = "0 1.5rem 2.5rem rgba(0,0,0,0.18)";
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 0.5rem 1.5rem rgba(0,0,0,0.10)";
-                }}
-              >
-                <Card.Body className="d-flex flex-column align-items-center justify-content-center position-relative" style={{ zIndex: 1 }}>
-                  <div className="mb-3">{skillResources[skill]?.icon}</div>
-                  <Card.Title className="fs-4 fw-semibold">{skill}</Card.Title>
-                </Card.Body>
-                {/* Faded Icon Watermark */}
-                <div
+        {/* Skill Cards */}
+        {!loading && !error && (
+          <Row xs={1} sm={2} md={3} className="g-4 mb-5 justify-content-center">
+            {skills.map((skill) => (
+              <Col key={skill}>
+                <Card
+                  className={`h-100 text-center shadow-sm skill-card position-relative ${
+                    selectedSkill === skill ? "border-primary" : ""
+                  }`}
+                  onClick={() => setSelectedSkill(skill)}
+                  tabIndex={0}
+                  aria-pressed={selectedSkill === skill}
+                  aria-label={`View resources for ${skill}`}
                   style={{
-                    position: "absolute",
-                    right: -20,
-                    bottom: -20,
-                    opacity: 0.13,
-                    fontSize: 120,
-                    pointerEvents: "none",
-                    zIndex: 0,
+                    background: cardGradients[skill] || "#f8f9fa",
+                    color: "#fff",
+                    cursor: "pointer",
+                    transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
+                    userSelect: "none",
+                    borderWidth: selectedSkill === skill ? "3px" : "1px",
+                    boxShadow: "0 0.5rem 1.5rem rgba(0,0,0,0.10)",
+                    position: "relative",
+                    overflow: "hidden"
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = "scale(1.07)";
+                    e.currentTarget.style.boxShadow = "0 1.5rem 2.5rem rgba(0,0,0,0.18)";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = "scale(1)";
+                    e.currentTarget.style.boxShadow = "0 0.5rem 1.5rem rgba(0,0,0,0.10)";
                   }}
                 >
-                  {skillIcons[skill]}
-                </div>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      )}
-
-      {/* Skill Resources Panel */}
-      {selectedSkill && (
-        <section
-          className="p-4 rounded shadow-sm bg-white mx-auto"
-          style={{
-            maxWidth: 820,
-            boxShadow: "0 1rem 2.5rem rgba(242, 78, 30, 0.12)",
-            border: `3px solid #F24E1E`,
-            animation: "fadeInUp 0.4s ease forwards",
-            background: "linear-gradient(135deg, #fff 80%, #F7B500 100%)"
-          }}
-        >
-          <div className="d-flex align-items-center mb-3">
-            <div className="me-3">{skillResources[selectedSkill]?.icon}</div>
-            <h2 className="fw-bold mb-0">{selectedSkill} Resources</h2>
-            <Button
-              variant="outline-danger"
-              className="ms-auto"
-              onClick={() => setSelectedSkill(null)}
-              aria-label="Close resources panel"
-            >
-              Close
-            </Button>
-          </div>
-          <hr />
-          <Row>
-            <Col md={4} className="mb-3">
-              <h5 className="fw-semibold">Articles</h5>
-              <ul className="list-unstyled">
-                {skillResources[selectedSkill]?.articles.map((item, idx) => (
-                  <li key={idx}>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-            <Col md={4} className="mb-3">
-              <h5 className="fw-semibold">Courses</h5>
-              <ul className="list-unstyled">
-                {skillResources[selectedSkill]?.courses.map((item, idx) => (
-                  <li key={idx}>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-            <Col md={4} className="mb-3">
-              <h5 className="fw-semibold">YouTube</h5>
-              <ul className="list-unstyled">
-                {skillResources[selectedSkill]?.youtube.map((item, idx) => (
-                  <li key={idx}>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </Col>
+                  <Card.Body className="d-flex flex-column align-items-center justify-content-center position-relative" style={{ zIndex: 1 }}>
+                    <div className="mb-3">{skillResources[skill]?.icon}</div>
+                    <Card.Title className="fs-4 fw-semibold">{skill}</Card.Title>
+                  </Card.Body>
+                  {/* Faded Icon Watermark */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: -20,
+                      bottom: -20,
+                      opacity: 0.13,
+                      fontSize: 120,
+                      pointerEvents: "none",
+                      zIndex: 0,
+                    }}
+                  >
+                    {skillIcons[skill]}
+                  </div>
+                </Card>
+              </Col>
+            ))}
           </Row>
-        </section>
-      )}
+        )}
 
-      {/* Fade-in animation for the resource panel */}
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px);}
-          to { opacity: 1; transform: translateY(0);}
-        }
-      `}</style>
-    </Container>
+        {/* Skill Resources Panel */}
+        {selectedSkill && (
+          <section
+            className="p-4 rounded shadow-sm bg-white mx-auto"
+            style={{
+              maxWidth: 820,
+              boxShadow: "0 1rem 2.5rem rgba(242, 78, 30, 0.12)",
+              border: `3px solid #F24E1E`,
+              animation: "fadeInUp 0.4s ease forwards",
+              background: "linear-gradient(135deg, #fff 80%, #F7B500 100%)"
+            }}
+          >
+            <div className="d-flex align-items-center mb-3">
+              <div className="me-3">{skillResources[selectedSkill]?.icon}</div>
+              <h2 className="fw-bold mb-0">{selectedSkill} Resources</h2>
+              <Button
+                variant="outline-danger"
+                className="ms-auto"
+                onClick={() => setSelectedSkill(null)}
+                aria-label="Close resources panel"
+              >
+                Close
+              </Button>
+            </div>
+            <hr />
+            <Row>
+              <Col md={4} className="mb-3">
+                <h5 className="fw-semibold">Articles</h5>
+                <ul className="list-unstyled">
+                  {skillResources[selectedSkill]?.articles.map((item, idx) => (
+                    <li key={idx}>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+              <Col md={4} className="mb-3">
+                <h5 className="fw-semibold">Courses</h5>
+                <ul className="list-unstyled">
+                  {skillResources[selectedSkill]?.courses.map((item, idx) => (
+                    <li key={idx}>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+              <Col md={4} className="mb-3">
+                <h5 className="fw-semibold">YouTube</h5>
+                <ul className="list-unstyled">
+                  {skillResources[selectedSkill]?.youtube.map((item, idx) => (
+                    <li key={idx}>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
+                        {item.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+            </Row>
+          </section>
+        )}
+
+        {/* Fade-in animation for the resource panel */}
+        <style>{`
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+          }
+        `}</style>
+      </Container>
+    </div>
   );
 };
 
