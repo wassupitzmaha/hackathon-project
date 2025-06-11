@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -132,78 +133,124 @@ function UIUXDesigner() {
       });
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div style={{ color: "red" }}>{error}</div>;
+  if (loading) return <div className="text-center mt-4 fs-5">Loading...</div>;
+  if (error)
+    return (
+      <div className="text-center mt-4 fs-5 text-danger fw-semibold">{error}</div>
+    );
+
   return (
-    <div>
-      <h2>UI/UX Designer Skills</h2>
-      <p>
-        <b>What Do UI/UX Designers Do?</b>
-        <p>
-          UI/UX designers create user-centered designs for digital products,
-          focusing on improving accessibility, usability, and visual appeal to
-          enhance user satisfaction. They conduct research, develop wireframes
-          and prototypes, and collaborate with teams to ensure the end product
-          meets user needs and business goals
+    <div className="container py-4">
+      <h2 className="mb-4 text-center fw-bold">UI/UX Designer Skills</h2>
+      <section className="mb-5 px-3 px-md-5 text-center">
+        <h5 className="fw-semibold mb-3">What Do UI/UX Designers Do?</h5>
+        <p className="text-secondary fs-5 mx-auto" style={{ maxWidth: 700, lineHeight: 1.6 }}>
+          UI/UX designers create user-centered designs for digital products, focusing on improving accessibility, usability, and visual appeal to
+          enhance user satisfaction. They conduct research, develop wireframes and prototypes, and collaborate with teams to ensure the end product
+          meets user needs and business goals.
         </p>
-      </p>
-      <Row xs={1} sm={2} md={3} className="g-4 mt-3">
+      </section>
+
+      <Row xs={1} sm={2} md={3} className="g-4 mb-5">
         {skills.map((skill, idx) => (
           <Col key={idx}>
             <Card
-              className="h-100 text-center shadow-sm"
+              className="h-100 text-center shadow-sm skill-card"
               onClick={() => setSelectedSkill(skill)}
-              style={{ cursor: "pointer" }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => { if (e.key === 'Enter') setSelectedSkill(skill); }}
+              style={{
+                cursor: "pointer",
+                transition: "transform 0.25s ease, box-shadow 0.25s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow = "0 0.75rem 1.5rem rgba(0,0,0,0.15)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "0 0.125rem 0.25rem rgba(0,0,0,0.1)";
+              }}
             >
               <Card.Body>
-                <Card.Title>{skill}</Card.Title>
+                <Card.Title className="fs-4 fw-semibold">{skill}</Card.Title>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
+
       {selectedSkill && skillResources[selectedSkill] && (
-        <div className="mt-4">
-          <h3>Resources for {selectedSkill}</h3>
-          <h5>Articles</h5>
-          <ul>
-            {skillResources[selectedSkill].articles.map((item, idx) => (
-              <li key={idx}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <h5>Courses</h5>
-          <ul>
-            {skillResources[selectedSkill].courses.map((item, idx) => (
-              <li key={idx}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <h5>YouTube Tutorials</h5>
-          <ul>
-            {skillResources[selectedSkill].youtube.map((item, idx) => (
-              <li key={idx}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
-                  {item.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <button
-            className="btn btn-secondary mt-2"
-            onClick={() => setSelectedSkill(null)}
-          >
-            Close
-          </button>
+        <div className="p-4 rounded shadow-sm bg-light mx-auto" style={{ maxWidth: 800 }}>
+          <h3 className="mb-4 text-center text-primary fw-bold">Resources for {selectedSkill}</h3>
+
+          <section className="mb-4">
+            <h5 className="fw-semibold mb-3 border-bottom pb-2">Articles</h5>
+            <ul className="list-unstyled ps-3">
+              {skillResources[selectedSkill].articles.map((item, idx) => (
+                <li key={idx} className="mb-2">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-decoration-none link-primary"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mb-4">
+            <h5 className="fw-semibold mb-3 border-bottom pb-2">Courses</h5>
+            <ul className="list-unstyled ps-3">
+              {skillResources[selectedSkill].courses.map((item, idx) => (
+                <li key={idx} className="mb-2">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-decoration-none link-primary"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h5 className="fw-semibold mb-3 border-bottom pb-2">YouTube Tutorials</h5>
+            <ul className="list-unstyled ps-3">
+              {skillResources[selectedSkill].youtube.map((item, idx) => (
+                <li key={idx} className="mb-2">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-decoration-none link-primary"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <div className="text-center mt-4">
+            <button
+              className="btn btn-outline-primary px-4"
+              onClick={() => setSelectedSkill(null)}
+            >
+              Close Resources
+            </button>
+          </div>
         </div>
       )}
     </div>
   );
 }
+
 export default UIUXDesigner;

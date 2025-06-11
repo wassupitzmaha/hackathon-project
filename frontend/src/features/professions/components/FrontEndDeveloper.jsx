@@ -133,6 +133,14 @@ function FrontEndDeveloper() {
                 overflow: "hidden",
                 transition: "transform 0.18s",
               }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-6px) scale(1.04)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(53,114,165,0.12)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '';
+              }}
             >
               <Card.Body style={{ position: 'relative', zIndex: 2 }}>
                 <div

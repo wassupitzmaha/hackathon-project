@@ -209,6 +209,14 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
       padding: '1rem',
       boxShadow: '0 2px 8px rgba(80,80,120,0.08)'
     }}
+    onMouseEnter={e => {
+      e.currentTarget.style.transform = 'translateY(-6px) scale(1.04)';
+      e.currentTarget.style.boxShadow = '0 8px 32px rgba(53,114,165,0.12)';
+    }}
+    onMouseLeave={e => {
+      e.currentTarget.style.transform = 'scale(1)';
+      e.currentTarget.style.boxShadow = '';
+    }}
   >
     {skillResources[skill] && skillResources[skill].icon}
   </span>

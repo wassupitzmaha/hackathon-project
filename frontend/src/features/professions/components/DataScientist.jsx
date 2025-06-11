@@ -84,7 +84,20 @@ function DataScientist() {
   if (error) return <div className="text-center mt-4 text-danger">{error}</div>;
 
   return (
-    <div className="container py-4">
+    <div 
+
+    style={{
+      background: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+      borderRadius: "1.5rem",
+      color: "#22223b",
+      padding: "2.5rem 2rem",
+      marginBottom: "2.5rem",
+      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)"
+    }}
+    className="text-center"
+  >
+    
+
       <h2 className="mb-4 fw-bold text-center" style={{
         background: 'linear-gradient(90deg, #3572A5 30%, #276DC3 70%)',
         WebkitBackgroundClip: 'text',
