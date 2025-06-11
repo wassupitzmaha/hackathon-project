@@ -195,7 +195,7 @@ function CloudEngineer() {
             </span>
           </div>
 
-              <Card.Title>{skill}</Card.Title>
+              <Card.Title style={{ fontWeight: 700 }}>{skill}</Card.Title>
             </Card.Body>
           </Card>
         </Col>
