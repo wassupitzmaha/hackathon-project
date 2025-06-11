@@ -3,6 +3,8 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { FaAws, FaMicrosoft, FaGoogle } from 'react-icons/fa';
+
 
 const skillResources = {
   AWS: {
