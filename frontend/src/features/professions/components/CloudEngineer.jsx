@@ -8,6 +8,7 @@ import { FaAws, FaMicrosoft, FaGoogle } from 'react-icons/fa';
 
 const skillResources = {
   AWS: {
+    icon: <FaAws size={54} color="#FF9900" />,
     articles: [
       {
         title: "How to Learn AWS From Scratch in 2025: The Complete Guide",
@@ -42,6 +43,7 @@ const skillResources = {
     ],
   },
   Azure: {
+    icon: <FaMicrosoft size={54} color="#0078D4" />,
     articles: [
       {
         title:
@@ -76,6 +78,7 @@ const skillResources = {
       },
     ],
     GCP : {
+      icon: <FaGoogle size={54} color="#4285F4" />,
       articles: [
         {
           title: "How to learn GCP: Guide and Resources (2025 Update)",
@@ -109,6 +112,12 @@ const skillResources = {
       ]
     },
   },
+};
+
+const cardGradients = {
+  AWS: "linear-gradient(120deg, #f7971e 0%, #ffd200 100%)",
+  Azure: "linear-gradient(120deg, #0078D4 0%, #00a4ef 100%)",
+  GCP: "linear-gradient(120deg, #4285F4 0%, #34a853 100%)",
 };
 
 function CloudEngineer() {
