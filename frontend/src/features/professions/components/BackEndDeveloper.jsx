@@ -246,7 +246,10 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
           animation: "fadeIn 0.5s"
         }}
         >
-          <h3>Resources for {selectedSkill}</h3>
+          <h3 
+          className="mb-3" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+          {skillResources[selectedSkill].icon}
+          <span>Resources for {selectedSkill}</span>Resources for {selectedSkill}</h3>
           <h5>Articles</h5>
           <ul>
             {skillResources[selectedSkill].articles.map((item, idx) => (
