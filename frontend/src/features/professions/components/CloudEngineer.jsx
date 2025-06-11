@@ -160,8 +160,24 @@ function CloudEngineer() {
     <Row xs={1} sm={2} md={3} className="g-4 mt-3">
       {skills.map((skill, idx) => (
         <Col key={idx}>
-          <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ cursor: "pointer" }}>
-            <Card.Body>
+          <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ 
+            
+            cursor: "pointer", 
+            background: cardGradients[skill] || "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)",
+            color: "#22223b",
+            borderRadius: "1.5rem",
+            boxShadow: "0 4px 24px rgba(80,80,120,0.10)",
+            position: "relative",
+            overflow: "hidden",
+            transition: "transform 0.18s",
+           }}
+
+                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.03)"}
+                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+            
+            >
+            <Card.Body style={{ position: 'relative', zIndex: 2 }}
+            >
               <Card.Title>{skill}</Card.Title>
             </Card.Body>
           </Card>
