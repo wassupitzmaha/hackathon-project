@@ -235,7 +235,17 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
         ))}
       </Row>
       {selectedSkill && skillResources[selectedSkill] && (
-        <div className="mt-4">
+        <div className="mt-4"
+        style={{
+          background: cardGradients[selectedSkill] || "#fff",
+          borderRadius: "1.2rem",
+          padding: "2rem 1.5rem",
+          boxShadow: "0 2px 16px rgba(80,80,120,0.10)",
+          maxWidth: 600,
+          margin: "2rem auto",
+          animation: "fadeIn 0.5s"
+        }}
+        >
           <h3>Resources for {selectedSkill}</h3>
           <h5>Articles</h5>
           <ul>
