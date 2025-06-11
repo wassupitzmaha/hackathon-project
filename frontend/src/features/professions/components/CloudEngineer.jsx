@@ -178,6 +178,23 @@ function CloudEngineer() {
             >
             <Card.Body style={{ position: 'relative', zIndex: 2 }}
             >
+
+<div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{
+              background: 'rgba(255,255,255,0.18)',
+              borderRadius: '50%',
+              padding: '1rem',
+              boxShadow: '0 2px 8px rgba(80,80,120,0.08)'
+            }}>
+              {skillResources[skill]?.icon}
+            </span>
+          </div>
+
               <Card.Title>{skill}</Card.Title>
             </Card.Body>
           </Card>
