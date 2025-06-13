@@ -107,7 +107,8 @@ function MachineLearningEngineer() {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   useEffect(() => {
-    fetch("api/v1/MachineLearningEngineer")
+    setLoading(true);
+    fetch("/api/v1/MachineLearningEngineer")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -115,6 +116,7 @@ function MachineLearningEngineer() {
       .then((data) => {
         if (data.length > 0 && Array.isArray(data[0].skills)) {
           setSkills(data[0].skills);
+          setError(null);
         } else {
           setError("No skills found");
         }
@@ -122,9 +124,9 @@ function MachineLearningEngineer() {
       })
       .catch((err) => {
         setError(err.message);
+        setLoading(false);
       });
-    setLoading(false);
-  });
+  }, []); // Only run once on mount
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: "red" }}>{error}</div>;
@@ -132,16 +134,14 @@ function MachineLearningEngineer() {
   return (
     <div>
       <h2>Machine Learning Engineers</h2>
+      <b>What Do Machine Learning Engineers Do?</b>
       <p>
-        <b>What Do Machine Learning Engineers Do?</b>
-        <p>
-          Machine learning engineers are IT professionals who research, design,
-          and build artificial intelligence systems that automate predictive
-          models by creating algorithms capable of learning and making decisions
-          from data. They collaborate with data scientists and other specialists
-          to develop efficient, data-driven solutions and continuously improve
-          machine learning models for real-world applications.
-        </p>
+        Machine learning engineers are IT professionals who research, design,
+        and build artificial intelligence systems that automate predictive
+        models by creating algorithms capable of learning and making decisions
+        from data. They collaborate with data scientists and other specialists
+        to develop efficient, data-driven solutions and continuously improve
+        machine learning models for real-world applications.
       </p>
       <Row xs={1} sm={2} md={3} className="g-4 mt-3">
         {skills.map((skill, idx) => (
@@ -202,4 +202,5 @@ function MachineLearningEngineer() {
     </div>
   );
 }
+
 export default MachineLearningEngineer;
