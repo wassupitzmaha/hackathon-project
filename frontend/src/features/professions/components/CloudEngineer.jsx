@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import { FaAws, FaMicrosoft, FaGoogle } from "react-icons/fa";
 import { Container, Button, Modal } from "react-bootstrap";
 
-// --- Skill Resources ---
+//Skill Resources
 const skillResources = {
   AWS: {
     icon: <FaAws size={54} color="#FF9900" />,
@@ -60,7 +60,7 @@ const cardGradients = {
   GCP: "linear-gradient(120deg, #4285F4 0%, #34a853 100%)",
 };
 
-// --- Hero Section Style ---
+//Hero Section Style
 const heroStyle = {
   background: "linear-gradient(120deg, #232526 0%, #414345 100%)",
   color: "#fff",
@@ -105,7 +105,7 @@ function CloudEngineer() {
       });
   }, []);
 
-  // --- Loading/Error States ---
+  //Loading/Error States
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (error) return <div style={{ color: "red" }} className="text-center py-5">{error}</div>;
 
@@ -210,7 +210,7 @@ function CloudEngineer() {
         </Modal.Footer>
       </Modal>
 
-      {/* Optional: Custom CSS for subtle card animation */}
+      {/* CSS for subtle card animation */}
       <style>{`
         .skill-card {
           transition: transform 0.2s, box-shadow 0.3s;
