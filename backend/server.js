@@ -6,7 +6,7 @@ import "dotenv/config";
 import * as db from "./db/index.js";
 
 import express from "express";
-import "dotenv/config";
+
 const requestHandler = express();
 const port = process.env.PORT || 3000;
 requestHandler.use(express.json());
@@ -38,7 +38,7 @@ requestHandler.get("/api/v1/FrontEndDeveloper", async (req, res) => {
     }));
     res.json(result);
   } catch (error) {
-    console.error("Error fetching tech professions:", error);
+    console.error(error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -139,6 +139,7 @@ requestHandler.get("/api/v1/FullStackDeveloper", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 requestHandler.get("/api/v1/DataScientist", async (req, res) => {
   try {
     const dbResponse = await db.query(
@@ -170,6 +171,8 @@ requestHandler.get("/api/v1/UIUXDesigner", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+=======
+>>>>>>> upstream/main
 
 requestHandler.get("/api/v1/MachineLearningEngineer", async (req, res) => {
   try {

@@ -1,98 +1,129 @@
 import React, { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
-import Alert from "react-bootstrap/Alert";
-import { SiHtml5, SiCss3, SiJavascript } from "react-icons/si";
-import { MdDeveloperMode } from "react-icons/md";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Spinner,
+  Alert,
+} from "react-bootstrap";
+import { SiFigma, SiSketch, SiAdobexd } from "react-icons/si";
+import { MdDesignServices } from "react-icons/md";
 
+// Skill resources for UI/UX tools
 const skillResources = {
-  HTML: {
-    icon: <SiHtml5 size={56} color="#fff" />,
+  Figma: {
+    icon: <SiFigma size={56} color="#fff" />,
     articles: [
-      { title: "W3Schools HTML Tutorial", url: "https://www.w3schools.com/html/" },
-      { title: "MDN Web Docs: HTML Learning Area", url: "https://developer.mozilla.org/en-US/docs/Learn/HTML" },
+      {
+        title: "Figma Official Getting Started",
+        url: "https://help.figma.com/hc/en-us/articles/360040318194-Getting-Started-with-Figma",
+      },
+      {
+        title: "Figma Design Best Practices",
+        url: "https://uxdesign.cc/figma-best-practices-2021-3c5f1b0b8a9c",
+      },
     ],
     courses: [
-      { title: "HTML/CSS for Beginners – freeCodeCamp", url: "https://www.freecodecamp.org/learn/2022/responsive-web-design/" },
-      { title: "HTML and CSS Foundations – Codecademy", url: "https://www.codecademy.com/learn/learn-html" },
+      {
+        title: "Figma for Beginners (freeCodeCamp)",
+        url: "https://www.youtube.com/watch?v=FTFaQWZBqQ8",
+      },
+      {
+        title: "Figma UI/UX Design Essentials (Udemy)",
+        url: "https://www.udemy.com/course/figma-ux-ui/",
+      },
     ],
     youtube: [
-      { title: "Learn HTML – Full Tutorial for Beginners", url: "https://www.youtube.com/watch?v=kUMe1FH4CHE" },
-      { title: "HTML & CSS Full Course for free", url: "https://www.youtube.com/watch?v=HGTJBPNC-Gw" },
+      {
+        title: "Figma Tutorial for Beginners",
+        url: "https://www.youtube.com/watch?v=4W4LvJnNegI",
+      },
     ],
   },
-  CSS: {
-    icon: <SiCss3 size={56} color="#fff" />,
+  Sketch: {
+    icon: <SiSketch size={56} color="#fff" />,
     articles: [
-      { title: "CSS Tutorial - W3Schools", url: "https://www.w3schools.com/css/" },
-      { title: "Learn CSS | web.dev", url: "https://web.dev/learn/css" },
+      {
+        title: "Sketch Official Documentation",
+        url: "https://www.sketch.com/docs/",
+      },
+      {
+        title: "Sketch Tips & Tricks",
+        url: "https://www.smashingmagazine.com/2018/01/sketch-app-tips-tricks/",
+      },
     ],
     courses: [
-      { title: "CSS - The Complete Guide 2025 (incl. Flexbox, Grid & Sass)", url: "https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/" },
-      { title: "HTML and CSS in depth", url: "https://www.coursera.org/learn/html-and-css-in-depth" },
+      {
+        title: "Sketch from A to Z (Udemy)",
+        url: "https://www.udemy.com/course/sketch-design/",
+      },
     ],
     youtube: [
-      { title: "CSS Tutorial for Beginners 2025", url: "https://www.youtube.com/watch?v=QeslNHmTObk" },
-      { title: "CSS Full Course for Beginners (2025) – Learn CSS from Scratch!", url: "https://www.youtube.com/watch?v=vlqTP-auoCM" },
+      {
+        title: "Sketch App Tutorial for Beginners",
+        url: "https://www.youtube.com/watch?v=5kB0a0r2KpY",
+      },
     ],
   },
-  JavaScript: {
-    icon: <SiJavascript size={56} color="#fff" />,
+  AdobeXD: {
+    icon: <SiAdobexd size={56} color="#fff" />,
     articles: [
-      { title: "The Modern JavaScript Tutorial", url: "https://javascript.info" },
-      { title: "W3Schools JavaScript Tutorial", url: "https://www.w3schools.com/js/" },
+      {
+        title: "Adobe XD Tutorials",
+        url: "https://helpx.adobe.com/xd/tutorials.html",
+      },
+      {
+        title: "Adobe XD UI/UX Design Guide",
+        url: "https://www.adobe.com/products/xd/learn/get-started.html",
+      },
     ],
     courses: [
-      { title: "The Complete JavaScript Course 2025: From Zero to Expert!", url: "https://www.udemy.com/course/the-complete-javascript-course/" },
-      { title: "Programming with JavaScript", url: "https://www.coursera.org/learn/programming-with-javascript" },
+      {
+        title: "Adobe XD Masterclass (YouTube)",
+        url: "https://www.youtube.com/watch?v=68w2VwalD5w",
+      },
+      {
+        title: "Adobe XD UI/UX Design (Udemy)",
+        url: "https://www.udemy.com/course/ui-ux-web-design-using-adobe-xd/",
+      },
     ],
     youtube: [
-      { title: "JavaScript Tutorial 2025 for Beginners - Full Course in 10 Hours", url: "https://www.youtube.com/watch?v=ogdtB_m6G5g" },
-      { title: "JavaScript Full Course 2025 | JavaScript Tutorial For Beginners", url: "https://www.youtube.com/watch?v=bv1FuLXRDKs" },
+      {
+        title: "Adobe XD for Beginners",
+        url: "https://www.youtube.com/watch?v=5jvVnF9lJDk",
+      },
     ],
   },
 };
 
+// Gradient backgrounds for each skill card
 const cardGradients = {
-  HTML: "linear-gradient(135deg, #e44d26 0%, #f16529 100%)",
-  CSS: "linear-gradient(135deg, #264de4 0%, #2965f1 100%)",
-  JavaScript: "linear-gradient(135deg, #f7df1e 0%, #f7b500 100%)",
+  Figma: "linear-gradient(135deg, #F24E1E 0%, #A259FF 100%)",
+  Sketch: "linear-gradient(135deg, #F7B500 0%, #FFB5E1 100%)",
+  AdobeXD: "linear-gradient(135deg, #FF61F6 0%, #5C2D91 100%)",
 };
 
+// Icon mapping for watermark
 const skillIcons = {
-  HTML: <SiHtml5 size={120} color="#fff" />,
-  CSS: <SiCss3 size={120} color="#fff" />,
-  JavaScript: <SiJavascript size={120} color="#fff" />,
+  Figma: <SiFigma size={120} color="#fff" />,
+  Sketch: <SiSketch size={120} color="#fff" />,
+  AdobeXD: <SiAdobexd size={120} color="#fff" />,
 };
 
-function FullStackDeveloper() {
+const UIUXDesigner = () => {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState("");
   const [selectedSkill, setSelectedSkill] = useState(null);
 
+  // Fetch skills from API (mocked for demo)
   useEffect(() => {
-    fetch("api/v1/FullStackDeveloper")
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then((data) => {
-        if (data.length > 0 && Array.isArray(data[0].skills)) {
-          setSkills(data[0].skills);
-        } else {
-          setError("No skills found");
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setError("Failed to fetch skills.");
-        setLoading(false);
-      });
+    setTimeout(() => {
+      setSkills(["Figma", "Sketch", "AdobeXD"]);
+      setLoading(false);
+    }, 700);
   }, []);
 
   return (
@@ -102,7 +133,8 @@ function FullStackDeveloper() {
         style={{
           minHeight: "48vh",
           width: "100%",
-          background: "linear-gradient(120deg, #e44d26 0%, #2965f1 60%, #f7df1e 100%)",
+          background:
+            "linear-gradient(120deg, #F24E1E 0%, #A259FF 60%, #5C2D91 100%)",
           color: "#fff",
           display: "flex",
           alignItems: "center",
@@ -141,18 +173,40 @@ function FullStackDeveloper() {
         />
         <Container style={{ position: "relative", zIndex: 1 }}>
           <div className="text-center">
-            <MdDeveloperMode size={110} color="#fff" className="mb-3" aria-hidden="true" />
+            <MdDesignServices
+              size={110}
+              color="#fff"
+              className="mb-3"
+              aria-hidden="true"
+            />
             <h1 className="fw-bold mb-3" style={{ fontSize: "2.8rem" }}>
-              Full Stack Developer
+              UI/UX Designer
             </h1>
-            <p className="lead" style={{ fontSize: "1.35rem", maxWidth: 800, margin: "0 auto", fontWeight: 500 }}>
-              Full Stack Developers are versatile engineers who design, build, and maintain both the front-end (what users see and interact with) and the back-end (servers, databases, and application logic) of websites and web applications. They work across the entire technology stack, seamlessly integrating user interfaces with robust server-side systems. By bridging the gap between design and functionality, Full Stack Developers ensure that digital products are not only visually engaging but also scalable, secure, and high-performing from end to end.
+            <p
+              className="lead"
+              style={{
+                fontSize: "1.35rem",
+                maxWidth: 800,
+                margin: "0 auto",
+                fontWeight: 500,
+              }}
+            >
+              A UI/UX designer is responsible for shaping how users interact
+              with digital products, blending creativity and technical skills to
+              craft intuitive, visually appealing, and efficient user
+              experiences. They conduct user research, design wireframes and
+              prototypes, and collaborate with developers to ensure every
+              interface is both beautiful and functional. From defining user
+              flows to refining visual details, UI/UX designers bridge the gap
+              between user needs and business goals, making technology
+              accessible, enjoyable, and impactful for everyone.
             </p>
           </div>
         </Container>
       </section>
 
       <Container className="py-5">
+        {/* Loading/Error State */}
         {loading && (
           <div className="text-center py-5">
             <Spinner animation="border" variant="primary" />
@@ -161,10 +215,11 @@ function FullStackDeveloper() {
         )}
         {error && <Alert variant="danger">{error}</Alert>}
 
+        {/* Skill Cards */}
         {!loading && !error && (
-          <Row xs={1} sm={2} md={3} className="g-4 mt-3 justify-content-center">
-            {skills.map((skill, idx) => (
-              <Col key={idx}>
+          <Row xs={1} sm={2} md={3} className="g-4 mb-5 justify-content-center">
+            {skills.map((skill) => (
+              <Col key={skill}>
                 <Card
                   className={`h-100 text-center shadow-sm skill-card position-relative ${
                     selectedSkill === skill ? "border-primary" : ""
@@ -177,25 +232,33 @@ function FullStackDeveloper() {
                     background: cardGradients[skill] || "#f8f9fa",
                     color: "#fff",
                     cursor: "pointer",
-                    transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
+                    transition:
+                      "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
                     userSelect: "none",
                     borderWidth: selectedSkill === skill ? "3px" : "1px",
                     boxShadow: "0 0.5rem 1.5rem rgba(0,0,0,0.10)",
                     position: "relative",
-                    overflow: "hidden"
+                    overflow: "hidden",
                   }}
-                  onMouseEnter={e => {
+                  onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "scale(1.07)";
-                    e.currentTarget.style.boxShadow = "0 1.5rem 2.5rem rgba(0,0,0,0.18)";
+                    e.currentTarget.style.boxShadow =
+                      "0 1.5rem 2.5rem rgba(0,0,0,0.18)";
                   }}
-                  onMouseLeave={e => {
+                  onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "scale(1)";
-                    e.currentTarget.style.boxShadow = "0 0.5rem 1.5rem rgba(0,0,0,0.10)";
+                    e.currentTarget.style.boxShadow =
+                      "0 0.5rem 1.5rem rgba(0,0,0,0.10)";
                   }}
                 >
-                  <Card.Body className="d-flex flex-column align-items-center justify-content-center position-relative" style={{ zIndex: 1 }}>
+                  <Card.Body
+                    className="d-flex flex-column align-items-center justify-content-center position-relative"
+                    style={{ zIndex: 1 }}
+                  >
                     <div className="mb-3">{skillResources[skill]?.icon}</div>
-                    <Card.Title className="fs-4 fw-semibold">{skill}</Card.Title>
+                    <Card.Title className="fs-4 fw-semibold">
+                      {skill}
+                    </Card.Title>
                   </Card.Body>
                   {/* Faded Icon Watermark */}
                   <div
@@ -218,15 +281,15 @@ function FullStackDeveloper() {
         )}
 
         {/* Skill Resources Panel */}
-        {selectedSkill && skillResources[selectedSkill] && (
+        {selectedSkill && (
           <section
             className="p-4 rounded shadow-sm bg-white mx-auto"
             style={{
               maxWidth: 820,
-              boxShadow: "0 1rem 2.5rem rgba(228, 77, 38, 0.12)",
-              border: `3px solid #e44d26`,
+              boxShadow: "0 1rem 2.5rem rgba(242, 78, 30, 0.12)",
+              border: `3px solid #F24E1E`,
               animation: "fadeInUp 0.4s ease forwards",
-              background: "linear-gradient(135deg, #fff 80%, #f7df1e 100%)"
+              background: "linear-gradient(135deg, #fff 80%, #F7B500 100%)",
             }}
           >
             <div className="d-flex align-items-center mb-3">
@@ -248,7 +311,12 @@ function FullStackDeveloper() {
                 <ul className="list-unstyled">
                   {skillResources[selectedSkill]?.articles.map((item, idx) => (
                     <li key={idx}>
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-decoration-none text-primary"
+                      >
                         {item.title}
                       </a>
                     </li>
@@ -260,7 +328,12 @@ function FullStackDeveloper() {
                 <ul className="list-unstyled">
                   {skillResources[selectedSkill]?.courses.map((item, idx) => (
                     <li key={idx}>
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-decoration-none text-primary"
+                      >
                         {item.title}
                       </a>
                     </li>
@@ -272,7 +345,12 @@ function FullStackDeveloper() {
                 <ul className="list-unstyled">
                   {skillResources[selectedSkill]?.youtube.map((item, idx) => (
                     <li key={idx}>
-                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-primary">
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-decoration-none text-primary"
+                      >
                         {item.title}
                       </a>
                     </li>
@@ -293,6 +371,6 @@ function FullStackDeveloper() {
       </Container>
     </div>
   );
-}
+};
 
-export default FullStackDeveloper;
+export default UIUXDesigner;
