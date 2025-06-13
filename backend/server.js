@@ -154,6 +154,7 @@ requestHandler.get("/api/v1/DataScientist", async (req, res) => {
     console.error("Error fetching tech professions:", error);
     res.status(500).json({ error: "Internal server error" });
   }
+  
 });
 
 requestHandler.get("/api/v1/UIUXDesigner", async (req, res) => {
