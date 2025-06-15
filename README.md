@@ -9,9 +9,7 @@ ProfessioNest is a centralized platform that helps learners tailor their study h
 * [Product Spec](#product-spec)
 * [Wireframes](#wireframes)
 * [Schema](#schema)
-* [Video Walkthrough](#video-walkthrough)
 * [UI Progress](#ui-progress)
-* [Demo Video](#demo-video)
 
 ---
 
@@ -64,7 +62,7 @@ Freemium: Core features are free. Premium features (like personalized roadmaps o
 ---
 
 ## Wireframes
-(Insert screenshots or links to wireframes here once available.)
+<img src = "./pictures/hackathon-wireframe.png" width=600>
 
 ---
 
@@ -81,11 +79,6 @@ Freemium: Core features are free. Premium features (like personalized roadmaps o
 
 ---
 
-## Video Walkthrough
-(Insert link to your video walkthrough here once available.)
-
----
-
 ## UI Progress
 * Home layout with dynamic career cards ✅
 * React Router views for skills and resources ✅
@@ -97,6 +90,3 @@ Freemium: Core features are free. Premium features (like personalized roadmaps o
 * Accessibility and responsiveness enhancements pending 📱
 
 ---
-
-## Demo Video
-(Insert link to your demo video here once available.)
