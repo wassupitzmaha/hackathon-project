@@ -17,6 +17,6 @@ export const query = (text, params, callback) => {
   // text: the question we're asking (in SQL language)
   // params: any specific details for the question
   // callback: what to do when we get an answer
-  console.log("Hello from your yelp db!");
+  console.log("Hello from your tech_professions db!");
   return pool.query(text, params, callback);
 };
