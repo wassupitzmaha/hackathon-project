@@ -1,13 +1,16 @@
 
-import React, { useEffect, useState } from 'react';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { FaNodeJs, FaServer, FaPython } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react'; //React hooks for side effects and state 
+import Card from 'react-bootstrap/Card'; //bootstrap card component
+import Row from 'react-bootstrap/Row'; //bootstrap grid system components
+import Col from 'react-bootstrap/Col'; //bootstrap col component
+import { FaNodeJs, FaServer, FaPython } from 'react-icons/fa'; //icons for skills
 
-
+//static data for skills resoruces
+//const means that skillResources is a constant variable
+//this is an object
+//{} means that the object is literal
 const skillResources = {
-  "Node.js": {
+  "Node.js": { //key: value pairs, node.js is a key
     icon: <FaNodeJs size={54} color="#68A063" />,
     articles: [
       {
@@ -37,9 +40,9 @@ const skillResources = {
     ],
   },
 
-  "Express": {
+  "Express": { //key : value pairs 
     icon: <FaServer size={54} color="#000" />,
-    articles: [
+    articles: [ //each key maps to another object, this key holds an array of objects
       {
         title: "Express.js Official Documentation",
         url: "https://expressjs.com/",
@@ -63,9 +66,9 @@ const skillResources = {
     ],
   },
 
-  "Python": {
+  "Python": { //key 
     icon: <FaPython size={54} color="#3776AB" />,
-    articles: [
+    articles: [ //key maps to a value, here this key maps to an array
       {
         title: "Python Official Documentation",
         url: "https://docs.python.org/3/tutorial/",
@@ -91,6 +94,8 @@ const skillResources = {
   },
 };
 
+//static data for card gradients
+//object that contains an array
 const cardGradients = {
   "Node.js": "linear-gradient(120deg, #43e97b 0%, #38f9d7 100%)",
   "Express": "linear-gradient(120deg, #cfd9df 0%, #e2ebf0 100%)",
@@ -100,19 +105,19 @@ const cardGradients = {
 
 
 function BackEndDeveloper() {
-  const [skills, setSkills] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  const [skills, setSkills] = useState([]); //state to store fetched skills
+  const [loading, setLoading] = useState(true); //state for loading status
+  const [error, setError] = useState(null); //state for error messages 
+  const [selectedSkill, setSelectedSkill] = useState(null); //state for selected skill to show resources
 
-  useEffect(() => {
-    fetch("/api/v1/BackEndDeveloper")
+  useEffect(() => { //hook to perform side effects ( data fetching )
+    fetch("/api/v1/BackEndDeveloper") //fetches data from backend API 
       .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
+        if (!res.ok) throw new Error("Network response was not ok"); //checks for HTTP errors
+        return res.json(); //parses the response as JSON
       })
       .then((data) => {
-        if (data.length > 0 && Array.isArray(data[0].skills)) {
+        if (data.length > 0 && Array.isArray(data[0].skills)) { //sets skills if data is valid
           setSkills(data[0].skills);
         } else {
           setError("No skills found");

@@ -1,10 +1,10 @@
-import { FaLightbulb, FaUsers, FaRocket, FaHeart } from "react-icons/fa";
+import { FaLightbulb, FaUsers, FaRocket, FaHeart } from "react-icons/fa"; //importing specific icons
 
 function AboutMe() {
   return (
-    <div
+    <div // Main container for the About Me section
       style={{
-        background: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        background: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)", //gradient
         borderRadius: "1.5rem",
         color: "#22223b",
         padding: "2.5rem 2rem",
@@ -17,6 +17,7 @@ function AboutMe() {
       }}
       className="text-center"
     >
+      {/* background icons for visual */}
       <FaHeart
         size={64}
         color="#fff"
@@ -33,10 +34,10 @@ function AboutMe() {
         size={90}
         color="#fff"
         style={{
-          position: "absolute",
+          position: "absolute", //carefully set the position to absolute 
           bottom: -40,
           right: 24,
-          opacity: 0.10,
+          opacity: 0.10, //low opacity
           zIndex: 0
         }}
         aria-hidden="true"
@@ -55,8 +56,8 @@ function AboutMe() {
         Why Maha & Ali Are Deeply Invested in ProfessioNest
       </h2>
       <div style={{ textAlign: "left", maxWidth: 750, margin: "0 auto", zIndex: 1, position: "relative" }}>
-        <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-          <li style={{ marginBottom: "2.2rem" }}>
+        <ul style={{ listStyle: "none", paddingLeft: 0 }}> {/* ul is for the entire list, everything inside this list doesn't have to be in speicfic order*/}
+          <li style={{ marginBottom: "2.2rem" }}> {/* li is for individual items, each of the bullet points it in its own <li> */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "0.5rem" }}>
               <FaLightbulb color="#a259ff" size={28} />
               <span style={{ fontWeight: 700, fontSize: "1.15rem" }}>Personal Motivation and Experience</span>
