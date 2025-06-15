@@ -48,14 +48,14 @@ Freemium: Core features are free. Premium features (like personalized roadmaps o
 * As a learner, I can browse careers → see relevant skills → access targeted resources for each skill.
 
 ### Screen Archetypes
-* Home View: Browse career fields through visual cards
+* Home View: Browse career fields through visual cards or search in the search bar
 * Career Skills View: See relevant skills for a selected career
 * Skill Resources View: Display curated study materials
 * About Us Page: Learn about the creators and the app’s mission
 * Navigation Bar: Navigate between views easily
 
 ### Navigation Flow
-* Home → Click Career → Click "Explore" → Click Skill → Access Resources
+* Home → Click Career or search in the Search Bar → Click "Explore" → Click Skill → Access Resources
 * Home → About Us
 * Navigation Bar accessible from all views
 
