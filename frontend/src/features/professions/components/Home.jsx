@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { professions } from '../data/professions'; // Import your updated professions array
+import { professions } from '../data/professions'; // Imported our updated professions array
 import ProfessionSearch from '../data/profession-search.jsx';
 
 const heroStyle = {
@@ -61,7 +61,7 @@ function Home() {
         <p className="text-center mb-4" style={{ fontSize: '1.1rem' }}>
           Click on a card below to start exploring your passion in tech!
         </p>
-        <ProfessionSearch />
+        <ProfessionSearch /> {/* impored the search bar */}
 
         <Row xs={1} sm={2} md={3} lg={4} className="g-4" style={cardGridStyle}>
           {professions.map((p, idx) => {
@@ -112,7 +112,7 @@ function Home() {
                       </span>
                     </div>
                     <Card.Title style={{ fontWeight: 700 }}>{p.profession}</Card.Title>
-                    {p.description && (
+                    {p.description && ( //render the description for each card
                       <Card.Text style={{ fontSize: '0.97rem', minHeight: '48px' }}>
                         {p.description}
                       </Card.Text>
@@ -120,7 +120,7 @@ function Home() {
                     <div style={{ margin: '0.5rem 0 1rem 0' }}>
                       {p.skills.map(skill => (
                         <span
-                          key={skill}
+                          key={skill} //key prop to put an index to the skill
                           style={{
                             display: 'inline-block',
                             margin: '0.2em 0.35em',
@@ -142,8 +142,8 @@ function Home() {
                       className="mt-2 px-4"
                       style={{ borderRadius: '2em', fontWeight: 600 }}
                     >
-                      Explore
-                    </Button>
+                      Explore 
+                    </Button> {/* renders a button */}
                   </Card.Body>
                 </Card>
               </Col>

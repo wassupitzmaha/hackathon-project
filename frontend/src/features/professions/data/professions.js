@@ -1,5 +1,5 @@
 
-import {
+import { //importing various icons from react-icons/fa
   FaCode,
   FaServer,
   FaCogs,
@@ -12,17 +12,20 @@ import {
   FaLayerGroup
 } from 'react-icons/fa';
 
-export const professions = [
+export const professions = [ //exports an array of javascript objects
   {
-    profession: "Front-End Developer",
-    icon: FaCode,
-    color: "primary",
-    link: "/FrontEndDeveloper",
-    background: "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)",
-    iconBg: "#8ec5fc22",
-    description: "Build beautiful, interactive user interfaces using modern web technologies.",
-    skills: ["HTML", "CSS", "JavaScript"]
+    profession: "Front-End Developer", //Name of the profession
+    icon: FaCode, //imported react icon component itself, allows ProfessionSearch to dynamically render the icon
+    color: "primary", //bootstrap color variant for buttons 
+    link: "/FrontEndDeveloper", //the frontend route for this profession's detailed page
+    background: "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)", //CSS background gradient
+    iconBg: "#8ec5fc22", //background color for the icon circle
+    description: "Build beautiful, interactive user interfaces using modern web technologies.", //short description
+    skills: ["HTML", "CSS", "JavaScript"] //example catds (displayed on the card, not fetched from DB)
   },
+
+  //other profession objects follow similar structure ....
+
   {
     profession: "Back-End Developer",
     icon: FaServer,

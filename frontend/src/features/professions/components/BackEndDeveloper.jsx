@@ -12,7 +12,7 @@ import { FaNodeJs, FaServer, FaPython } from 'react-icons/fa'; //icons for skill
 const skillResources = {
   "Node.js": { //key: value pairs, node.js is a key
     icon: <FaNodeJs size={54} color="#68A063" />,
-    articles: [
+    articles: [ //each key maps to another object, this key holds an array of objects
       {
         title: "Node.js Official Documentation",
         url: "https://nodejs.org/en/docs/",
@@ -105,10 +105,10 @@ const cardGradients = {
 
 
 function BackEndDeveloper() {
-  const [skills, setSkills] = useState([]); //state to store fetched skills
+  const [skills, setSkills] = useState([]); //state to store fetched skills, when the setSkills is called the component re-renders with fetched skills data
   const [loading, setLoading] = useState(true); //state for loading status
   const [error, setError] = useState(null); //state for error messages 
-  const [selectedSkill, setSelectedSkill] = useState(null); //state for selected skill to show resources
+  const [selectedSkill, setSelectedSkill] = useState(null); //state for selected skill to show resources, selectedSkills stores the card that the user clikced on
 
   useEffect(() => { //hook to perform side effects ( data fetching )
     fetch("/api/v1/BackEndDeveloper") //fetches data from backend API 
@@ -116,25 +116,27 @@ function BackEndDeveloper() {
         if (!res.ok) throw new Error("Network response was not ok"); //checks for HTTP errors
         return res.json(); //parses the response as JSON
       })
-      .then((data) => {
-        if (data.length > 0 && Array.isArray(data[0].skills)) { //sets skills if data is valid
-          setSkills(data[0].skills);
+      .then((data) => { //ensuring that the data is an array and contains skills before setting the state
+        if (data.length > 0 && Array.isArray(data[0].skills)) { 
+          setSkills(data[0].skills); //sets skills if data is valid
         } else {
-          setError("No skills found");
+          setError("No skills found"); //sets errors if data is malformed
         }
-        setLoading(false);
+        setLoading(false); //set loading to false 
       })
-      .catch((err) => {
+      .catch((err) => { //catches network or parsing errors
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, []); //empty dependency array means this runs once after initial render
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div style={{ color: "red" }}>{error}</div>;
+  if (loading) return <div>Loading...</div>; //conditional rendering for loading state
+  if (error) return <div style={{ color: "red" }}>{error}</div>; //conditional rendering for error state
 
   return (
-    <div style = {{
+
+    //mostly just styling
+    <div style = {{  
 
       background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
       borderRadius: "1.5rem",
@@ -192,12 +194,18 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
       />
 
 
-      <Row xs={1} sm={2} md={3} className="g-4 mt-3">
-        {skills.map((skill, idx) => (
-          <Col key={idx}>
+      <Row xs={1} sm={2} md={3} className="g-4 mt-3"> 
+        {skills.map((skill, idx) => ( //maps over fetched skills to render cards, then returns a Col component containing a card 
+          <Col key={idx}> {/* bootstrap elements, creating a responsive grif layout of skill cards */}
+
+            {/* onClick attaches event listeners to React elements and when a card is clicked the setSelectedSkills function updates the component's state 
+            triggering a re-render that displays the resources based on the selected skill */}
 
             <Card className="h-100 text-center shadow-sm" onClick={() => setSelectedSkill(skill)} style={{ background: cardGradients[skill] || "linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)", cursor: "pointer" }}>
+              
               <Card.Body>
+
+                
 
               <div
   style={{
@@ -223,7 +231,7 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
       e.currentTarget.style.boxShadow = '';
     }}
   >
-    {skillResources[skill] && skillResources[skill].icon}
+    {skillResources[skill] && skillResources[skill].icon} {/* renders skill icon */}
   </span>
 </div>
               
@@ -265,6 +273,7 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
           <span>Resources for {selectedSkill}</span>Resources for {selectedSkill}</h3>
           <h5>Articles</h5>
           <ul>
+            {/* maps article links */}
             {skillResources[selectedSkill].articles.map((item, idx) => (
               <li key={idx}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
@@ -275,6 +284,7 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
           </ul>
           <h5>Courses</h5>
           <ul>
+            {/* maps course links */}
             {skillResources[selectedSkill].courses.map((item, idx) => (
               <li key={idx}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
@@ -283,9 +293,13 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
               </li>
             ))}
           </ul>
+
+          {/* youtube tutorials */}
           <h5>YouTube Tutorials</h5>
           <ul>
-            {skillResources[selectedSkill].youtube.map((item, idx) => (
+
+            {/* maps youtuve tutorial links */}
+            {skillResources[selectedSkill].youtube.map((item, idx) => ( 
               <li key={idx}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
                   {item.title}
@@ -303,6 +317,7 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
       )}
 
             {/* Subtle Card Animation */}
+            {/* CSS for hover effects */}
             <style>{`
         .skill-card {
           transition: transform 0.2s, box-shadow 0.3s;
