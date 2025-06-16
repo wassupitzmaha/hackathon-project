@@ -222,13 +222,14 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
       padding: '1rem',
       boxShadow: '0 2px 8px rgba(80,80,120,0.08)'
     }}
-    onMouseEnter={e => {
-      e.currentTarget.style.transform = 'translateY(-6px) scale(1.04)';
-      e.currentTarget.style.boxShadow = '0 8px 32px rgba(53,114,165,0.12)';
+    //event handlers for mouse hover effects
+    onMouseEnter={e => { //when mouse enters
+      e.currentTarget.style.transform = 'translateY(-6px) scale(1.04)'; //make the card lift 
+      e.currentTarget.style.boxShadow = '0 8px 32px rgba(53,114,165,0.12)'; //make the card gain a shadow
     }}
-    onMouseLeave={e => {
-      e.currentTarget.style.transform = 'scale(1)';
-      e.currentTarget.style.boxShadow = '';
+    onMouseLeave={e => { //when mouse leaves
+      e.currentTarget.style.transform = 'scale(1)'; //resets the card's position
+      e.currentTarget.style.boxShadow = ''; //resets the shadow
     }}
   >
     {skillResources[skill] && skillResources[skill].icon} {/* renders skill icon */}
