@@ -56,7 +56,7 @@ function AboutMe() {
         Why Maha & Ali Are Deeply Invested in ProfessioNest
       </h2>
       <div style={{ textAlign: "left", maxWidth: 750, margin: "0 auto", zIndex: 1, position: "relative" }}>
-        <ul style={{ listStyle: "none", paddingLeft: 0 }}> {/* ul is for the entire list, everything inside this list doesn't have to be in speicfic order*/}
+        <ul style={{ listStyle: "none", paddingLeft: 0 }}> {/* ul is for the entire list, everything inside this list doesn't have to be in specific order*/}
           <li style={{ marginBottom: "2.2rem" }}> {/* li is for individual items, each of the bullet points it in its own <li> */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "0.5rem" }}>
               <FaLightbulb color="#a259ff" size={28} />

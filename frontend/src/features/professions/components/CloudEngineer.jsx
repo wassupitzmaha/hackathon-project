@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react"; //import useEffect and useState hooks from react
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { FaAws, FaMicrosoft, FaGoogle } from "react-icons/fa";
-import { Container, Button, Modal } from "react-bootstrap";
+import Card from "react-bootstrap/Card"; //import bootstrap card component
+import Row from "react-bootstrap/Row"; //import the grid system in which the cards will be shown
+import Col from "react-bootstrap/Col"; //imports the col component from bootstrap's library
+import { FaAws, FaMicrosoft, FaGoogle } from "react-icons/fa"; //imports the necessary icons from react-icons/fa
+import { Container, Button, Modal } from "react-bootstrap"; //imports the modal component from react-bootstrap which triggers the pop-up dialog
 
 //Skill Resources
-const skillResources = {
+const skillResources = { //javascript object since key:value pairs 
   AWS: {
     icon: <FaAws size={54} color="#FF9900" />,
     articles: [
@@ -54,8 +54,8 @@ const skillResources = {
   },
 };
 
-const cardGradients = {
-  AWS: "linear-gradient(120deg, #f7971e 0%, #ffd200 100%)",
+const cardGradients = { //variable to store the gradient colors
+  AWS: "linear-gradient(120deg, #f7971e 0%, #ffd200 100%)", 
   Azure: "linear-gradient(120deg, #0078D4 0%, #00a4ef 100%)",
   GCP: "linear-gradient(120deg, #4285F4 0%, #34a853 100%)",
 };
@@ -80,24 +80,24 @@ const heroOverlay = {
 };
 
 function CloudEngineer() {
-  const [skills, setSkills] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  const [skills, setSkills] = useState([]); //useState hook to store the skills fetched from backend
+  const [loading, setLoading] = useState(true); //useState hok to store the loading status
+  const [error, setError] = useState(null); //useState hook to store the error state
+  const [selectedSkill, setSelectedSkill] = useState(null); //useState hook to store the skill that has been selected
 
-  useEffect(() => {
-    fetch("/api/v1/CloudEngineer")
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
+  useEffect(() => { //useEffect to perform side effects
+    fetch("/api/v1/CloudEngineer") //api to fetch data from backend
+      .then((res) => { 
+        if (!res.ok) throw new Error("Network response was not ok"); //checks for HTTP server errors 
+        return res.json(); //returns the response as JSON
       })
-      .then((data) => {
-        if (data.length > 0 && Array.isArray(data[0].skills)) {
-          setSkills(data[0].skills);
+      .then((data) => { //checks if the data is in an array and contains skills before setting the state 
+        if (data.length > 0 && Array.isArray(data[0].skills)) { 
+          setSkills(data[0].skills); //sets skills if data is valid
         } else {
-          setError("No skills found");
+          setError("No skills found"); //sets error is data is malformed
         }
-        setLoading(false);
+        setLoading(false); //sets loading to false if any of the conditions above are met
       })
       .catch((err) => {
         setError(err.message);
@@ -106,8 +106,8 @@ function CloudEngineer() {
   }, []);
 
   //Loading/Error States
-  if (loading) return <div className="text-center py-5">Loading...</div>;
-  if (error) return <div style={{ color: "red" }} className="text-center py-5">{error}</div>;
+  if (loading) return <div className="text-center py-5">Loading...</div>; //conditionally renders a loading state
+  if (error) return <div style={{ color: "red" }} className="text-center py-5">{error}</div>; //conditionally renders an error state
 
   return (
     <Container className="py-5">
@@ -126,10 +126,10 @@ function CloudEngineer() {
 
       {/* Skills Grid */}
       <Row xs={1} sm={2} md={3} className="g-4">
-        {skills.map((skill, idx) => (
-          <Col key={idx}>
+        {skills.map((skill, idx) => ( //maps over fetched skills to render the cards
+          <Col key={idx}> {/* bootstrap element to ensure a responsive grid layout for the elements */}
             <Card
-              className="h-100 text-center shadow-sm skill-card"
+              className="h-100 text-center shadow-sm skill-card" 
               onClick={() => setSelectedSkill(skill)}
               style={{
                 cursor: "pointer",
@@ -139,17 +139,18 @@ function CloudEngineer() {
                 boxShadow: "0 6px 20px rgba(0, 0, 0, 0.08)",
                 transition: "transform 0.2s, box-shadow 0.3s",
               }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = "translateY(-7px) scale(1.04)";
-                e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.18)";
+           
+              onMouseEnter={e => { {/* attaches event handler for the mouse motion clicks */}
+                e.currentTarget.style.transform = "translateY(-7px) scale(1.04)"; //upon mouse enter, lift the card
+                e.currentTarget.style.boxShadow = "0 12px 32px rgba(0,0,0,0.18)"; //the car gains a shadow
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.08)";
+                e.currentTarget.style.transform = "scale(1)"; //mouse leaves, and transform the card back to where it was
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.08)"; //mouse leaves, rerender the card without shadow.
               }}
             >
               <Card.Body>
-                <div className="mb-3">{skillResources[skill]?.icon}</div>
+                <div className="mb-3">{skillResources[skill]?.icon}</div> {/* render icon */}
                 <Card.Title className="fw-bold fs-4">{skill}</Card.Title>
                 <Card.Text className="text-muted small">
                   Tap for curated learning resources
@@ -162,8 +163,8 @@ function CloudEngineer() {
 
       {/* Modal for Skill Resources */}
       <Modal
-        show={!!selectedSkill}
-        onHide={() => setSelectedSkill(null)}
+        show={!!selectedSkill} //show if selectedSkill has a value
+        onHide={() => setSelectedSkill(null)} //if the useState hook for setSelectedSkill has no value then hide the pop-up dialog
         centered
         size="lg"
         aria-labelledby="skill-resource-modal"
@@ -178,7 +179,7 @@ function CloudEngineer() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedSkill && skillResources[selectedSkill] && (
+          {selectedSkill && skillResources[selectedSkill] && ( //conditionally renders the card if the skill and the resources for it exists.
             <>
               {["articles", "courses", "youtube"].map((section, idx) => (
                 <div key={idx} className="mb-4">
@@ -187,9 +188,9 @@ function CloudEngineer() {
                     {skillResources[selectedSkill][section].map((item, i) => (
                       <li key={i} className="mb-1">
                         <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={item.url} //sets the url for the link 
+                          target="_blank" //makes it open in a different tab
+                          rel="noopener noreferrer" //security best practice to open the link in a new tab
                           className="text-dark fw-medium"
                           style={{ textDecoration: "none" }}
                         >

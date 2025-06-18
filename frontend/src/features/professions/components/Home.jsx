@@ -64,7 +64,7 @@ function Home() {
         <ProfessionSearch /> {/* impored the search bar */}
 
         <Row xs={1} sm={2} md={3} lg={4} className="g-4" style={cardGridStyle}>
-          {professions.map((p, idx) => {
+          {professions.map((p, idx) => { //maps through the professions list through the array that was imported and then displays it through a card
             const Icon = p.icon;
             return (
               <Col key={p.profession}>

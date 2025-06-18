@@ -196,7 +196,7 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
 
       <Row xs={1} sm={2} md={3} className="g-4 mt-3"> 
         {skills.map((skill, idx) => ( //maps over fetched skills to render cards, then returns a Col component containing a card 
-          <Col key={idx}> {/* bootstrap elements, creating a responsive grif layout of skill cards */}
+          <Col key={idx}> {/* bootstrap elements, creating a responsive grid layout of skill cards */}
 
             {/* onClick attaches event listeners to React elements and when a card is clicked the setSelectedSkills function updates the component's state 
             triggering a re-render that displays the resources based on the selected skill */}
@@ -299,7 +299,7 @@ fontSize: '1.1rem', maxWidth: 650, margin: '0.5rem auto 0', lineHeight: 1.7
           <h5>YouTube Tutorials</h5>
           <ul>
 
-            {/* maps youtuve tutorial links */}
+            {/* maps youtube tutorial links */}
             {skillResources[selectedSkill].youtube.map((item, idx) => ( 
               <li key={idx}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">
